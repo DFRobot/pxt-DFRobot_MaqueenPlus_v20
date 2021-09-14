@@ -1,0 +1,33 @@
+{
+    "name": "DFRobot_MaqueenPlus_V2.0",
+    "version": "0.2.3",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "_locales/zh-cn/DFRobot_MaqueenPlus_V2.0-strings.json",
+        "maqueenplus.ts",
+        "enums.d.ts",
+        "ws2812b.ts",
+        "sendBuffer.asm",
+        "NecIR.cpp",
+        "shims.d.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "4.0.11",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "blocksprj"
+}
