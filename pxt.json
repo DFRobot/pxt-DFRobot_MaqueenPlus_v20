@@ -17,7 +17,6 @@
         "enums.d.ts",
         "ws2812b.ts",
         "sendBuffer.asm",
-        "NecIR.cpp",
         "shims.d.ts"
     ],
     "testFiles": [
@@ -30,5 +29,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }
