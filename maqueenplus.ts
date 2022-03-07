@@ -77,6 +77,38 @@ namespace DFRobotMaqueenPlusV2 {
     let _brightness = 255
     let state: number;
     /**
+     *  Init I2C until success
+     */
+    //% weight=100
+    //%block="initialize via I2C until success"
+    export function I2CInit(): void {
+        let Version_v = 0;
+        pins.i2cWriteNumber(I2CADDR, 0x32, NumberFormat.Int8LE);
+        Version_v = pins.i2cReadNumber(I2CADDR, NumberFormat.Int8LE);
+        while (Version_v == 0) {
+            basic.showLeds(`
+                # . . . #
+                . # . # .
+                . . # . .
+                . # . # .
+                # . . . #
+                `, 10)
+            basic.pause(500)
+            basic.clearScreen()
+            pins.i2cWriteNumber(0x10, 0x32, NumberFormat.Int8LE);
+            Version_v = pins.i2cReadNumber(I2CADDR, NumberFormat.Int8LE);
+        }
+        basic.showLeds(`
+                . . . . .
+                . . . . #
+                . . . # .
+                # . # . .
+                . # . . .
+                `, 10)
+        basic.pause(500)
+        basic.clearScreen()
+    }
+    /**
      * TODO: 电机控制模块
      * @param emotor 电机选择枚举
      * @param edir   电机方向选择枚举

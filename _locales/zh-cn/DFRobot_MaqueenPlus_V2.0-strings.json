@@ -28,5 +28,5 @@
     "DFRobotMaqueenPlusV2.rgb|block": "红|%r绿|%g蓝|%b",
     "DFRobotMaqueenPlusV2.ledRainbow|block": "设置RGB显示彩虹色从|%startHue 到|%endHue",
     "DFRobotMaqueenPlusV2.ledBlank|block": "关闭全部RGB",
-    "DFRobotMaqueenPlusV2.init|block":"初始化麦昆PlusV2"
+    "DFRobotMaqueenPlusV2.I2CInit|block": "初始化麦昆PlusV2"
 }
