@@ -312,6 +312,7 @@ namespace DFRobotMaqueenPlusV2 {
      */
     //% block="read version"
     //% weight=2
+    //% advanced=true
     export function readVersion():string{
         let version;
         pins.i2cWriteNumber(I2CADDR, VERSION_CNT_REGISTER, NumberFormat.Int8LE);
