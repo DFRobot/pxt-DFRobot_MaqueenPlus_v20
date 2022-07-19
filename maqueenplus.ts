@@ -48,6 +48,31 @@ enum MyEnumLineSensor{
     //% block="R2"
     eR2,
 };
+/**
+ * Well known colors for a NeoPixel strip
+ */
+enum NeoPixelColors {
+    //% block=red
+    Red = 0xFF0000,
+    //% block=orange
+    Orange = 0xFFA500,
+    //% block=yellow
+    Yellow = 0xFFFF00,
+    //% block=green
+    Green = 0x00FF00,
+    //% block=blue
+    Blue = 0x0000FF,
+    //% block=indigo
+    Indigo = 0x4b0082,
+    //% block=violet
+    Violet = 0x8a2be2,
+    //% block=purple
+    Purple = 0xFF00FF,
+    //% block=white
+    White = 0xFFFFFF,
+    //% block=black
+    Black = 0x000000
+}
 
 const I2CADDR = 0x10;
 const ADC0_REGISTER = 0X1E;
@@ -362,9 +387,8 @@ namespace DFRobotMaqueenPlusV2 {
 
     //% weight=60
     //% index.min=0 index.max=3
-    //% rgb.shadow="colorNumberPicker"
     //% block="RGB light |%index show color|%rgb"
-    export function setIndexColor(index: number, rgb: number) {
+    export function setIndexColor(index: number, rgb: NeoPixelColors) {
         let f = index;
         let t = index;
         let r = (rgb >> 16) * (_brightness / 255);
@@ -394,9 +418,8 @@ namespace DFRobotMaqueenPlusV2 {
      */
 
     //% weight=60
-    //% rgb.shadow="colorNumberPicker"
     //% block=" RGB show color |%rgb"
-    export function showColor(rgb: number) {
+    export function showColor(rgb: NeoPixelColors) {
         let r = (rgb >> 16) * (_brightness / 255);
         let g = ((rgb >> 8) & 0xFF) * (_brightness / 255);
         let b = ((rgb) & 0xFF) * (_brightness / 255);
