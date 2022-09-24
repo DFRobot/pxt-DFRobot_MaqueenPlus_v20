@@ -2,7 +2,7 @@
   "DFRobotMaqueenPlusV2.I2CInit|block": "initialiser le Maqueen",
   "DFRobotMaqueenPlusV2.controlLED|block": "contrôler %eled %eSwitch",
   "DFRobotMaqueenPlusV2.controlMotorStop|block": "arrêter %emotor",
-  "DFRobotMaqueenPlusV2.controlMotor|block": "activer %emotor %edir à la vitesse %speed",
+  "DFRobotMaqueenPlusV2.controlMotor|block": "activer %emotor %edir vitesse %speed",
   "DFRobotMaqueenPlusV2.ledBlank|block": "éteindre LEDs RGB",
   "DFRobotMaqueenPlusV2.ledRainbow|block": "afficher arc en ciel sur LEDs RGB de|%startHue à|%endHue",
   "DFRobotMaqueenPlusV2.ledRange|block": "ensemble de LEDs RGB de|%from à|%to",
