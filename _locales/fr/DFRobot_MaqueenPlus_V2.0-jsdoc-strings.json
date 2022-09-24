@@ -16,7 +16,7 @@
   "DFRobotMaqueenPlusV2.readLineSensorData|param|eline": "Sélection du capteur de suivi de ligne",
   "DFRobotMaqueenPlusV2.readLineSensorState": "Retourne l'état des capteurs de suivi de ligne.",
   "DFRobotMaqueenPlusV2.readLineSensorState|param|eline": "Sélection du capteur de suivi de ligne à utiliser",
-  "DFRobotMaqueenPlusV2.readUltrasonic": "Retourne la valeur calculée par le capteur de distance à utrason.",
+  "DFRobotMaqueenPlusV2.readUltrasonic": "Retourne la valeur calculée par le capteur de distance à utrason en cm. Le capteur retourne parfois 0 en cas de mouvements brusques.",
   "DFRobotMaqueenPlusV2.readUltrasonic|param|echo": "Pin sur laquelle est connectée la pin echo du capteur de distance à ultrason. Par exemple : DigitalPin.P14",
   "DFRobotMaqueenPlusV2.readUltrasonic|param|trig": "Pin sur laquelle est connectée la pin TRIG du capteur de distance à ultrason. Par exemple : DigitalPin.P13",
   "DFRobotMaqueenPlusV2.readVersion": "Retourne le numéro de version",

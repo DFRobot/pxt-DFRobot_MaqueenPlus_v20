@@ -8,7 +8,7 @@
   "DFRobotMaqueenPlusV2.ledRange|block": "ensemble de LEDs RGB de|%from à|%to",
   "DFRobotMaqueenPlusV2.readLineSensorData|block": "valeur brute du capteur de suivi de ligne %eline",
   "DFRobotMaqueenPlusV2.readLineSensorState|block": "état du capteur de suivi de ligne %eline",
-  "DFRobotMaqueenPlusV2.readUltrasonic|block": "distance en cm du capteur de distance à ultrason (pin TRIG %trig, pin ECHO %echo)",
+  "DFRobotMaqueenPlusV2.readUltrasonic|block": "distance en cm (pins TRIG %trig / ECHO %echo)",
   "DFRobotMaqueenPlusV2.readVersion|block": "version",
   "DFRobotMaqueenPlusV2.rgb|block": "rouge|%r vert|%g bleu|%b",
   "DFRobotMaqueenPlusV2.setBrightness|block": "définir luminosité des LEDs RGB à |%brightness",
