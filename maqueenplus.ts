@@ -325,8 +325,10 @@ namespace DFRobotMaqueenPlusV2 {
             data = pins.pulseIn(echo, PulseValue.High,500*58)
         }
         data = data/39;
-        if(data <= 0 || data > 500)
+        if(data <= 0)
             return 0;
+        if(data > 500)
+            return 500;
         return Math.round(data);
     }
 
