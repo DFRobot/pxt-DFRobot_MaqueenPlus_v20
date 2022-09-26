@@ -13,6 +13,7 @@
         "main.ts",
         "README.md",
         "_locales/zh-cn/DFRobot_MaqueenPlus_V2.0-strings.json",
+        "_locales/zh-tw/DFRobot_MaqueenPlus_V2.0-strings.json",
         "maqueenplus.ts",
         "enums.d.ts",
         "ws2812b.ts",
