@@ -13,7 +13,7 @@
     "DFRobotMaqueenPlusV2.controlLED|block":"控制 %eled %eSwitch",
     "DFRobotMaqueenPlusV2.readLineSensorState|block":"讀取循跡感測器 %eline 狀態",
     "DFRobotMaqueenPlusV2.readLineSensorData|block":"讀取循跡感測器 %eline ADC數據",
-    "DFRobotMaqueenPlusV2.readUltrasonic|block": "設置超音波感測器 TRIG 角位 %trig ECHO角位 %echo 获取数据 單位:CM",
+    "DFRobotMaqueenPlusV2.readUltrasonic|block": "設置超音波感測器 TRIG 角位 %trig ECHO角位 %echo 獲取數據 單位:CM",
     "DFRobotMaqueenPlusV2.readVersion|block": "讀取版本號",
     "DFRobotMaqueenPlusV2.controlMotorStop|block":"設置 %emotor 停止",
     "DFRobotMaqueenPlusV2|block":"麥昆Plus V2",
