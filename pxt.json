@@ -1,6 +1,6 @@
 {
     "name": "DFRobot_MaqueenPlus_V2.0",
-    "version": "1.2.2",
+    "version": "1.2.5",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -13,6 +13,7 @@
         "main.ts",
         "README.md",
         "_locales/zh-cn/DFRobot_MaqueenPlus_V2.0-strings.json",
+        "_locales/zh-tw/DFRobot_MaqueenPlus_V2.0-strings.json",
         "_locales/fr/DFRobot_MaqueenPlus_V2.0-strings.json",
         "_locales/fr/DFRobot_MaqueenPlus_V2.0-jsdoc-strings.json",
         "maqueenplus.ts",
@@ -31,5 +32,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
