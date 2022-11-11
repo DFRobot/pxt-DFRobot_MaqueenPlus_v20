@@ -6,7 +6,7 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "ir": "github:tangjie133/pxt-DFRobot_IR#v0.0.7"
+        "ir": "github:tangjie133/pxt-DFRobot_IR#v0.2.0"
     },
     "files": [
         "main.blocks",
@@ -30,5 +30,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }
