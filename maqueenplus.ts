@@ -316,15 +316,19 @@ namespace DFRobotMaqueenPlusV2 {
         basic.pause(1);
         pins.digitalWritePin(trig, 0)
         if(pins.digitalReadPin(echo) == 0){
+            pins.digitalWritePin(trig, 0);
             pins.digitalWritePin(trig, 1);
+            basic.pause(20);
             pins.digitalWritePin(trig, 0);
             data = pins.pulseIn(echo, PulseValue.High,500*58);
         }else{
-            pins.digitalWritePin(trig, 0);
             pins.digitalWritePin(trig, 1);
+            pins.digitalWritePin(trig, 0);
+            basic.pause(20);
+            pins.digitalWritePin(trig, 0);
             data = pins.pulseIn(echo, PulseValue.High,500*58)
         }
-        data = data/39;
+        data = data / 59;
         if(data <= 0 || data > 500)
             return 0;
         return Math.round(data);
