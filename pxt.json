@@ -4,7 +4,6 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*",
         "microphone": "*",
         "ir": "github:tangjie133/pxt-DFRobot_IR#v0.2.0"
     },
