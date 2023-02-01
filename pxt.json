@@ -1,7 +1,7 @@
 {
     "name": "DFRobot_MaqueenPlus_V2.0",
     "version": "1.2.8",
-    "description": "",
+    "description": "MaqueenPlus v2 is an advanced STEM educational robot for Micro:Bit.",
     "dependencies": {
         "core": "*",
         "microphone": "*",
