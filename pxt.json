@@ -13,7 +13,7 @@
         "README.md",
         "_locales/zh-cn/maqueenPlusV2-strings.json",
         "_locales/zh-tw/maqueenPlusV2-strings.json",
-        "maqueenplus.ts",
+        "maqueenPlusV2.ts",
         "enums.d.ts",
         "ws2812b.ts",
         "sendBuffer.asm",
