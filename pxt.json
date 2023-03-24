@@ -5,15 +5,14 @@
     "license": "MIT",
     "dependencies": {
         "core": "*",
-        "ir": "github:tangjie133/pxt-DFRobot_IR#v0.2.0"
+        "ir": "github:tangjie133/pxt-DFRobot_IR#v0.2.0",
+        "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.2"
     },
     "files": [
         "README.md",
         "_locales/zh-cn/maqueenPlusV2-strings.json",
         "_locales/zh-tw/maqueenPlusV2-strings.json",
         "enums.d.ts",
-        "ws2812b.ts",
-        "sendBuffer.asm",
         "shims.d.ts",
         "maqueenPlusV2.ts"
     ],
