@@ -1,10 +1,10 @@
 {
     "name": "DFRobot_MaqueenPlus_V2.0",
-    "version": "1.2.8",
-    "description": "",
+    "version": "1.2.9",
+    "license": "MIT",
+    "description": "This is the latest version of Maqueen Plus, a programming robot for STEAM education.",
     "dependencies": {
         "core": "*",
-        "microphone": "*",
         "ir": "github:tangjie133/pxt-DFRobot_IR#v0.2.0"
     },
     "files": [

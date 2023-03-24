@@ -1,31 +1,105 @@
+# Maqueen Plus V2
 
-> 在 [https://tangjie133.github.io/pxt-dfrobot_maqueenplus_v20/](https://tangjie133.github.io/pxt-dfrobot_maqueenplus_v20/) 打开此页面
+## 介绍
 
-## 用作扩展
+This is the latest version of Maqueen Plus, a programming robot for STEAM education. Optimized with more expansion ports, larger capacity power supply and larger body, the Maqueen Plus V2.0 can be perfectly compatible with more peripheral components like HuskyLens AI camera and Maqueen Mechanic kits, which makes it an accessible STEAM robot teaching tool for primary and secondary students. Besides, it can be not only suitable for classroom teaching, but also can be used for after-school extended exercises and robot competitions. Besides all the functions of Maqueen Lite, it offers richer and more flexible functions and stronger performance. Whether you have ever used Maqueen series products or not, you'll find it very easy to get started.
 
-此仓库可以作为 **插件** 添加到 MakeCode 中。
+[购买链接](https://www.dfrobot.com/product-2026.html)
 
-* 打开 [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* 点击 **新项目**
-* 点击齿轮图标菜单下的 **扩展**
-* 搜索 **https://github.com/tangjie133/pxt-dfrobot_maqueenplus_v20** 并导入
+## Basic usage
 
-## 编辑此项目 ![构建状态标志](https://github.com/tangjie133/pxt-dfrobot_maqueenplus_v20/workflows/MakeCode/badge.svg)
+1. forward
 
-在 MakeCode 中编辑此仓库。
+```blocks
 
-* 打开 [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* 点击 **导入**，然后点击 **导入 URL**
-* 粘贴 **https://github.com/tangjie133/pxt-dfrobot_maqueenplus_v20** 并点击导入
+DFRobotMaqueenPlusV2.I2CInit()
+basic.forever(function () {
+    DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eAllMotor, MyEnumDir.eForward, 100)
+})
 
-## 积木块预览
+```
 
-此图像显示主分支中最后一次提交的块代码。
-此图像可能需要几分钟才能刷新。
+2. Backward
 
-![块的渲染视图](https://github.com/tangjie133/pxt-dfrobot_maqueenplus_v20/raw/master/.github/makecode/blocks.png)
+```blocks
 
-#### 元数据（用于搜索、渲染）
+DFRobotMaqueenPlusV2.I2CInit()
+basic.forever(function on_forever() {
+    DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eAllMotor, MyEnumDir.eBackward, 100)
+})
+
+```
+
+3. Blinking LED
+
+```blocks
+
+DFRobotMaqueenPlusV2.I2CInit()
+music.startMelody(music.builtInMelody(Melodies.Dadadadum), MelodyOptions.Forever)
+DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eAllMotor, MyEnumDir.eForward, 255)
+basic.forever(function () {
+    DFRobotMaqueenPlusV2.setIndexColor(DFRobotMaqueenPlusV2.ledRange(0, 3), NeoPixelColors.Red)
+    basic.pause(1000)
+    DFRobotMaqueenPlusV2.setIndexColor(DFRobotMaqueenPlusV2.ledRange(0, 3), NeoPixelColors.Blue)
+    basic.pause(1000)
+})
+
+```
+
+4. Light Sensing Robot
+
+```blocks
+
+DFRobotMaqueenPlusV2.I2CInit()
+basic.forever(function () {
+    basic.showNumber(input.lightLevel())
+})
+
+```
+
+5. Ultrasonic
+
+```blocks
+
+DFRobotMaqueenPlusV2.I2CInit()
+basic.forever(function () {
+    basic.showNumber(DFRobotMaqueenPlusV2.readUltrasonic(DigitalPin.P13, DigitalPin.P14))
+})
+
+```
+
+6. Line-tracking Robot
+
+```blocks
+
+DFRobotMaqueenPlusV2.I2CInit()
+basic.forever(function () {
+    if (DFRobotMaqueenPlusV2.readLineSensorState(MyEnumLineSensor.eM) == 1) {
+        DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eAllMotor, MyEnumDir.eForward, 100)
+    } else {
+        if (DFRobotMaqueenPlusV2.readLineSensorState(MyEnumLineSensor.eL1) == 0 && DFRobotMaqueenPlusV2.readLineSensorState(MyEnumLineSensor.eR1) == 1) {
+            DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eLeftMotor, MyEnumDir.eForward, 160)
+            DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eRightMotor, MyEnumDir.eForward, 30)
+        }
+        if (DFRobotMaqueenPlusV2.readLineSensorState(MyEnumLineSensor.eL1) == 1 && DFRobotMaqueenPlusV2.readLineSensorState(MyEnumLineSensor.eR1) == 0) {
+            DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eRightMotor, MyEnumDir.eForward, 160)
+            DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eLeftMotor, MyEnumDir.eForward, 30)
+        }
+    }
+})
+
+```
+## License
+
+MIT
+
+Copyright (c) 2020, microbit/micropython Chinese community
+
+## Supported targets
 
 * for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+
+
+```package
+maqueenPlusV2=github:DFRobot/pxt-DFRobot_MaqueenPlus_v20
+```

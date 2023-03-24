@@ -1,52 +1,52 @@
 
-//电机选择枚举
+//Motor selection enumeration
 enum MyEnumMotor{
     //% block="left motor"
-    eLeftMotor,
+    LeftMotor,
     //% block="right motor"
-    eRightMotor,
+    RightMotor,
     //% block="all motor"
-    eAllMotor,
+    AllMotor,
 };
 
-//电机方向枚举选择
+//Motor direction enumeration selection
 enum MyEnumDir{
     //% block="rotate forward"
-    eForward,
+    Forward,
     //% block="backward"
-    eBackward,
+    Backward,
 };
 
-//LED灯选择枚举
+//LED light selection enumeration
 enum MyEnumLed{
     //% block="left led light"
-    eLeftLed,
+    LeftLed,
     //% block="right led light"
-    eRightLed,
+    RightLed,
     //% block="all led light"
-    eAllLed,
+    AllLed,
 };
 
-//LED灯开关枚举选择
+//LED light switch enumeration selection
 enum MyEnumSwitch{
     //% block="close"
-    eClose,
+    Close,
     //% block="open"
-    eOpen,
+    Open,
 };
 
-//巡线传感器选择
+//Line sensor selection
 enum MyEnumLineSensor{
     //% block="L1"
-    eL1,
+    SensorL1,
     //% block="M"
-    eM,
+    SensorM,
     //% block="R1"
-    eR1,
+    SensorR1,
     //% block="L2"
-    eL2,
+    SensorL2,
     //% block="R2"
-    eR2,
+    SensorR2,
 };
 /**
  * Well known colors for a NeoPixel strip
@@ -89,10 +89,10 @@ const VERSION_CNT_REGISTER = 0X32;
 const VERSION_DATA_REGISTER = 0X33;
 
 /**
- * 自定义图形块
+ * Custom graphic block
  */
-//% weight=100 color=#0fbc11 icon="\uf067" block="Maqueen Plus V2"
-namespace DFRobotMaqueenPlusV2 {
+//% weight=100 color=#0fbc11 icon="\uf067" block="maqueenPlusV2"
+namespace maqueenPlusV2 {
     
     let irstate: number;
     let neopixel_buf = pins.createBuffer(16 * 3);
@@ -134,25 +134,25 @@ namespace DFRobotMaqueenPlusV2 {
         basic.clearScreen()
     }
     /**
-     * TODO: 电机控制模块
-     * @param emotor 电机选择枚举
-     * @param edir   电机方向选择枚举
-     * @param speed  电机速度控制 eg:100
-     * @return 无
+     * TODO: Motor control module
+     * @param emotor Motor selection enumeration
+     * @param edir   Motor direction selection enumeration
+     * @param speed  Motor speed control eg:100
+     * @return 
      */
     //% block="set %emotor direction %edir speed %speed"
     //% speed.min=0 speed.max=255
     //% weight=99
     export function controlMotor(emotor:MyEnumMotor, edir:MyEnumDir, speed:number):void{
         switch(emotor){
-            case MyEnumMotor.eLeftMotor:
+            case MyEnumMotor.LeftMotor:
                 let leftBuffer = pins.createBuffer(3);
                 leftBuffer[0] = LEFT_MOTOR_REGISTER;
                 leftBuffer[1] = edir;
                 leftBuffer[2] = speed;
                 pins.i2cWriteBuffer(I2CADDR, leftBuffer);
             break;
-            case MyEnumMotor.eRightMotor:
+            case MyEnumMotor.RightMotor:
                 let rightBuffer = pins.createBuffer(3);
                 rightBuffer[0] = RIGHT_MOTOR_REGISTER;
                 rightBuffer[1] = edir;
@@ -174,14 +174,14 @@ namespace DFRobotMaqueenPlusV2 {
     //% weight=98
     export function controlMotorStop(emotor:MyEnumMotor):void{
         switch (emotor) {
-            case MyEnumMotor.eLeftMotor:
+            case MyEnumMotor.LeftMotor:
                 let leftBuffer = pins.createBuffer(3);
                 leftBuffer[0] = LEFT_MOTOR_REGISTER;
                 leftBuffer[1] = 0;
                 leftBuffer[2] = 0;
                 pins.i2cWriteBuffer(I2CADDR, leftBuffer);
                 break;
-            case MyEnumMotor.eRightMotor:
+            case MyEnumMotor.RightMotor:
                 let rightBuffer = pins.createBuffer(3);
                 rightBuffer[0] = RIGHT_MOTOR_REGISTER;
                 rightBuffer[1] = 0;
@@ -201,22 +201,22 @@ namespace DFRobotMaqueenPlusV2 {
     }
 
     /**
-     * TODO: 控制左右LED灯开关模块
-     * @param eled LED灯选择
-     * @param eswitch 控制LED灯的打开或关闭
-     * @return  无
+     * TODO: Control left and right LED light switch module
+     * @param eled LED lamp selection
+     * @param eswitch Control LED light on or off
+     * @return 
      */
     //% block="control %eled %eSwitch"
     //% weight=97
     export function controlLED(eled:MyEnumLed, eSwitch:MyEnumSwitch):void{
         switch(eled){
-            case MyEnumLed.eLeftLed:
+            case MyEnumLed.LeftLed:
                 let leftLedControlBuffer = pins.createBuffer(2);
                 leftLedControlBuffer[0] = LEFT_LED_REGISTER;
                 leftLedControlBuffer[1] = eSwitch;
                 pins.i2cWriteBuffer(I2CADDR, leftLedControlBuffer);
             break;
-            case MyEnumLed.eRightLed:
+            case MyEnumLed.RightLed:
                 let rightLedControlBuffer = pins.createBuffer(2);
                 rightLedControlBuffer[0] = RIGHT_LED_REGISTER;
                 rightLedControlBuffer[1] = eSwitch;
@@ -233,9 +233,9 @@ namespace DFRobotMaqueenPlusV2 {
     }
 
     /**
-     * TODO: 获取巡线传感器状态
-     * @param eline  选择巡线传感器枚举
-     * @return 返回选择巡线传感器状态
+     * TODO: Get the state of the patrol sensor
+     * @param eline  Select the inspection sensor enumeration
+     * @return Return to select the patrol sensor state
      */
     //% block="read line sensor %eline state"
     //% weight=96
@@ -244,16 +244,16 @@ namespace DFRobotMaqueenPlusV2 {
         let data = pins.i2cReadNumber(I2CADDR, NumberFormat.Int8LE)
         let state;
         switch(eline){
-            case MyEnumLineSensor.eL1: 
+            case MyEnumLineSensor.SensorL1: 
                 state = (data & 0x08) == 0x08 ? 1 : 0; 
             break;
-            case MyEnumLineSensor.eM: 
+            case MyEnumLineSensor.SensorM: 
                 state = (data & 0x04) == 0x04 ? 1 : 0; 
             break;
-            case MyEnumLineSensor.eR1: 
+            case MyEnumLineSensor.SensorR1: 
                 state = (data & 0x02) == 0x02 ? 1 : 0; 
             break;
-            case MyEnumLineSensor.eL2: 
+            case MyEnumLineSensor.SensorL2: 
                 state = (data & 0x10) == 0X10 ? 1 : 0; 
             break;
             default:
@@ -264,31 +264,31 @@ namespace DFRobotMaqueenPlusV2 {
     }
     
     /**
-     * TODO: 获取巡线传感器ADC数据
-     * @param eline 选择巡线传感器枚举
-     * @return 返回选择巡线传感器AD值
+     * TODO: The ADC data of the patrol sensor is obtained
+     * @param eline Select the inspection sensor enumeration
+     * @return Return the AD value of the selected patrol sensor
      */
     //% block="read line sensor %eline  ADC data"
     //% weight=95
     export function readLineSensorData(eline:MyEnumLineSensor):number{
         let data;
         switch(eline){
-            case MyEnumLineSensor.eR2:
+            case MyEnumLineSensor.SensorR2:
                 pins.i2cWriteNumber(I2CADDR, ADC0_REGISTER, NumberFormat.Int8LE);
                 let adc0Buffer = pins.i2cReadBuffer(I2CADDR, 1);
                 data = adc0Buffer[1] << 8 | adc0Buffer[0]
             break;
-            case MyEnumLineSensor.eR1:
+            case MyEnumLineSensor.SensorR1:
                 pins.i2cWriteNumber(I2CADDR, ADC1_REGISTER, NumberFormat.Int8LE);
                 let adc1Buffer = pins.i2cReadBuffer(I2CADDR, 2);
                 data = adc1Buffer[1] << 8 | adc1Buffer[0];
             break;
-            case MyEnumLineSensor.eM:
+            case MyEnumLineSensor.SensorM:
                 pins.i2cWriteNumber(I2CADDR, ADC2_REGISTER, NumberFormat.Int8LE);
                 let adc2Buffer = pins.i2cReadBuffer(I2CADDR, 2);
                 data = adc2Buffer[1] << 8 | adc2Buffer[0];
             break;
-            case MyEnumLineSensor.eL1:
+            case MyEnumLineSensor.SensorL1:
                 pins.i2cWriteNumber(I2CADDR, ADC3_REGISTER, NumberFormat.Int8LE);
                 let adc3Buffer = pins.i2cReadBuffer(I2CADDR, 2);
                 data = adc3Buffer[1] << 1 | adc3Buffer[0];
@@ -303,10 +303,10 @@ namespace DFRobotMaqueenPlusV2 {
         return data;
     }
     /**
-     * DOTO:获取超声波数据
-     * @param trig trig引脚选择枚举 eg:DigitalPin.P13
-     * @param echo echo引脚选择枚举 eg:DigitalPin.P14
-     * @return 返回超声波获取的数据
+     * DOTO:Acquiring ultrasonic data
+     * @param trig trig pin selection enumeration eg:DigitalPin.P13
+     * @param echo echo pin selection enumeration eg:DigitalPin.P14
+     * @return Returns the data obtained by the ultrasound
      */
     //% block="set ultrasonic sensor TRIG pin %trig ECHO pin %echo read data company:cm"
     //% weight=94
@@ -335,9 +335,9 @@ namespace DFRobotMaqueenPlusV2 {
     }
 
     /**
-     * DOTO: 获取版本号
-     * @param 无
-     * @return 返回版本号
+     * DOTO: Getting the version number
+     * @param 
+     * @return Return version number
      */
     //% block="read version"
     //% weight=2
