@@ -8,82 +8,82 @@ This is the latest version of Maqueen Plus, a programming robot for STEAM educat
 
 ## Basic usage
 
-1. forward
+* forward
 
 ```blocks
 
-DFRobotMaqueenPlusV2.I2CInit()
+maqueenPlusV2.I2CInit()
 basic.forever(function () {
-    DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eAllMotor, MyEnumDir.eForward, 100)
+    maqueenPlusV2.controlMotor(MyEnumMotor.AllMotor, MyEnumDir.Forward, 100)
 })
 
 ```
 
-2. Backward
+* Backward
 
 ```blocks
 
-DFRobotMaqueenPlusV2.I2CInit()
+maqueenPlusV2.I2CInit()
 basic.forever(function on_forever() {
-    DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eAllMotor, MyEnumDir.eBackward, 100)
+    maqueenPlusV2.controlMotor(MyEnumMotor.AllMotor, MyEnumDir.Backward, 100)
 })
 
 ```
 
-3. Blinking LED
+* Blinking LED
 
 ```blocks
 
-DFRobotMaqueenPlusV2.I2CInit()
+maqueenPlusV2.I2CInit()
 music.startMelody(music.builtInMelody(Melodies.Dadadadum), MelodyOptions.Forever)
-DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eAllMotor, MyEnumDir.eForward, 255)
+maqueenPlusV2.controlMotor(MyEnumMotor.AllMotor, MyEnumDir.Forward, 255)
 basic.forever(function () {
-    DFRobotMaqueenPlusV2.setIndexColor(DFRobotMaqueenPlusV2.ledRange(0, 3), NeoPixelColors.Red)
+    maqueenPlusV2.setIndexColor(maqueenPlusV2.ledRange(0, 3), NeoPixelColors.Red)
     basic.pause(1000)
-    DFRobotMaqueenPlusV2.setIndexColor(DFRobotMaqueenPlusV2.ledRange(0, 3), NeoPixelColors.Blue)
+    maqueenPlusV2.setIndexColor(maqueenPlusV2.ledRange(0, 3), NeoPixelColors.Blue)
     basic.pause(1000)
 })
 
 ```
 
-4. Light Sensing Robot
+* Light Sensing Robot
 
 ```blocks
 
-DFRobotMaqueenPlusV2.I2CInit()
+maqueenPlusV2.I2CInit()
 basic.forever(function () {
     basic.showNumber(input.lightLevel())
 })
 
 ```
 
-5. Ultrasonic
+* Ultrasonic
 
 ```blocks
 
-DFRobotMaqueenPlusV2.I2CInit()
+maqueenPlusV2.I2CInit()
 basic.forever(function () {
-    basic.showNumber(DFRobotMaqueenPlusV2.readUltrasonic(DigitalPin.P13, DigitalPin.P14))
+    basic.showNumber(maqueenPlusV2.readUltrasonic(DigitalPin.P13, DigitalPin.P14))
 })
 
 ```
 
-6. Line-tracking Robot
+* Line-tracking Robot
 
 ```blocks
 
-DFRobotMaqueenPlusV2.I2CInit()
+maqueenPlusV2.I2CInit()
 basic.forever(function () {
-    if (DFRobotMaqueenPlusV2.readLineSensorState(MyEnumLineSensor.eM) == 1) {
-        DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eAllMotor, MyEnumDir.eForward, 100)
+    if (maqueenPlusV2.readLineSensorState(MyEnumLineSensor.SensorM) == 1) {
+        maqueenPlusV2.controlMotor(MyEnumMotor.AllMotor, MyEnumDir.Forward, 100)
     } else {
-        if (DFRobotMaqueenPlusV2.readLineSensorState(MyEnumLineSensor.eL1) == 0 && DFRobotMaqueenPlusV2.readLineSensorState(MyEnumLineSensor.eR1) == 1) {
-            DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eLeftMotor, MyEnumDir.eForward, 160)
-            DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eRightMotor, MyEnumDir.eForward, 30)
+        if (maqueenPlusV2.readLineSensorState(MyEnumLineSensor.SensorL1) == 0 && maqueenPlusV2.readLineSensorState(MyEnumLineSensor.SensorR1) == 1) {
+            maqueenPlusV2.controlMotor(MyEnumMotor.LeftMotor, MyEnumDir.Forward, 160)
+            maqueenPlusV2.controlMotor(MyEnumMotor.RightMotor, MyEnumDir.Forward, 30)
         }
-        if (DFRobotMaqueenPlusV2.readLineSensorState(MyEnumLineSensor.eL1) == 1 && DFRobotMaqueenPlusV2.readLineSensorState(MyEnumLineSensor.eR1) == 0) {
-            DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eRightMotor, MyEnumDir.eForward, 160)
-            DFRobotMaqueenPlusV2.controlMotor(MyEnumMotor.eLeftMotor, MyEnumDir.eForward, 30)
+        if (maqueenPlusV2.readLineSensorState(MyEnumLineSensor.SensorL1) == 1 && maqueenPlusV2.readLineSensorState(MyEnumLineSensor.SensorR1) == 0) {
+            maqueenPlusV2.controlMotor(MyEnumMotor.RightMotor, MyEnumDir.Forward, 160)
+            maqueenPlusV2.controlMotor(MyEnumMotor.LeftMotor, MyEnumDir.Forward, 30)
         }
     }
 })
