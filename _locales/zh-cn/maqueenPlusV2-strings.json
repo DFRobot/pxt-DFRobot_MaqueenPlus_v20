@@ -9,7 +9,7 @@
     "MyEnumLed.AllLed|block": "全部LED灯",
     "MyEnumSwitch.Close|block": "关闭",
     "MyEnumSwitch.Open|block": "打开",
-    "maqueenPlusV2.controlMotor|block":"设置 %emotor 方向 %edir 速度 %spee",
+    "maqueenPlusV2.controlMotor|block":"设置 %emotor 方向 %edir 速度 %speed",
     "maqueenPlusV2.controlLED|block":"控制 %eled %eSwitch",
     "maqueenPlusV2.readLineSensorState|block":"读取巡线传感器 %eline 状态",
     "maqueenPlusV2.readLineSensorData|block":"读取巡线传感器 %eline ADC数据",
