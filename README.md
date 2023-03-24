@@ -6,6 +6,8 @@ This is the latest version of Maqueen Plus, a programming robot for STEAM educat
 
 [Purchase link](https://www.dfrobot.com/product-2026.html)
 
+[Tutorial Links](https://wiki.dfrobot.com/SKU_MBT0021-EN_Maqueen_Plus_STEAM_Programming_Educational_Robot#target_0)
+
 ## Basic usage
 
 * forward
