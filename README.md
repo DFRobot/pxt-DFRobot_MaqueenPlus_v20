@@ -1,10 +1,10 @@
 # Maqueen Plus V2
 
-## 介绍
+## Introduction
 
 This is the latest version of Maqueen Plus, a programming robot for STEAM education. Optimized with more expansion ports, larger capacity power supply and larger body, the Maqueen Plus V2.0 can be perfectly compatible with more peripheral components like HuskyLens AI camera and Maqueen Mechanic kits, which makes it an accessible STEAM robot teaching tool for primary and secondary students. Besides, it can be not only suitable for classroom teaching, but also can be used for after-school extended exercises and robot competitions. Besides all the functions of Maqueen Lite, it offers richer and more flexible functions and stronger performance. Whether you have ever used Maqueen series products or not, you'll find it very easy to get started.
 
-[购买链接](https://www.dfrobot.com/product-2026.html)
+[Purchase link](https://www.dfrobot.com/product-2026.html)
 
 ## Basic usage
 
