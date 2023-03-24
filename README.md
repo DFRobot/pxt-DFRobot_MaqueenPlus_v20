@@ -14,7 +14,7 @@ This is the latest version of Maqueen Plus, a programming robot for STEAM educat
 
 maqueenPlusV2.I2CInit()
 basic.forever(function () {
-    maqueenPlusV2.controlMotor(MyEnumMotor.AllMotor, MyEnumDir.Forward, 100)
+    maqueenPlusV2.controlMotor(maqueenPlusV2.MyEnumMotor.AllMotor, maqueenPlusV2.MyEnumDir.Forward, 100)
 })
 
 ```
@@ -25,7 +25,7 @@ basic.forever(function () {
 
 maqueenPlusV2.I2CInit()
 basic.forever(function on_forever() {
-    maqueenPlusV2.controlMotor(MyEnumMotor.AllMotor, MyEnumDir.Backward, 100)
+    maqueenPlusV2.controlMotor(maqueenPlusV2.MyEnumMotor.AllMotor, maqueenPlusV2.MyEnumDir.Backward, 100)
 })
 
 ```
@@ -36,11 +36,11 @@ basic.forever(function on_forever() {
 
 maqueenPlusV2.I2CInit()
 music.startMelody(music.builtInMelody(Melodies.Dadadadum), MelodyOptions.Forever)
-maqueenPlusV2.controlMotor(MyEnumMotor.AllMotor, MyEnumDir.Forward, 255)
+maqueenPlusV2.controlMotor(maqueenPlusV2.MyEnumMotor.AllMotor, maqueenPlusV2.MyEnumDir.Forward, 255)
 basic.forever(function () {
-    maqueenPlusV2.setIndexColor(maqueenPlusV2.ledRange(0, 3), NeoPixelColors.Red)
+    maqueenPlusV2.setIndexColor(maqueenPlusV2.ledRange(0, 3), maqueenPlusV2.NeoPixelColors.Red)
     basic.pause(1000)
-    maqueenPlusV2.setIndexColor(maqueenPlusV2.ledRange(0, 3), NeoPixelColors.Blue)
+    maqueenPlusV2.setIndexColor(maqueenPlusV2.ledRange(0, 3), maqueenPlusV2.NeoPixelColors.Blue)
     basic.pause(1000)
 })
 
@@ -74,16 +74,16 @@ basic.forever(function () {
 
 maqueenPlusV2.I2CInit()
 basic.forever(function () {
-    if (maqueenPlusV2.readLineSensorState(MyEnumLineSensor.SensorM) == 1) {
-        maqueenPlusV2.controlMotor(MyEnumMotor.AllMotor, MyEnumDir.Forward, 100)
+    if (maqueenPlusV2.readLineSensorState(maqueenPlusV2.MyEnumLineSensor.SensorM) == 1) {
+        maqueenPlusV2.controlMotor(maqueenPlusV2.MyEnumMotor.AllMotor, maqueenPlusV2.MyEnumDir.Forward, 100)
     } else {
-        if (maqueenPlusV2.readLineSensorState(MyEnumLineSensor.SensorL1) == 0 && maqueenPlusV2.readLineSensorState(MyEnumLineSensor.SensorR1) == 1) {
-            maqueenPlusV2.controlMotor(MyEnumMotor.LeftMotor, MyEnumDir.Forward, 160)
-            maqueenPlusV2.controlMotor(MyEnumMotor.RightMotor, MyEnumDir.Forward, 30)
+        if (maqueenPlusV2.readLineSensorState(maqueenPlusV2.MyEnumLineSensor.SensorL1) == 0 && maqueenPlusV2.readLineSensorState(maqueenPlusV2.MyEnumLineSensor.SensorR1) == 1) {
+            maqueenPlusV2.controlMotor(maqueenPlusV2.MyEnumMotor.LeftMotor, maqueenPlusV2.MyEnumDir.Forward, 160)
+            maqueenPlusV2.controlMotor(maqueenPlusV2.MyEnumMotor.RightMotor, maqueenPlusV2.MyEnumDir.Forward, 30)
         }
-        if (maqueenPlusV2.readLineSensorState(MyEnumLineSensor.SensorL1) == 1 && maqueenPlusV2.readLineSensorState(MyEnumLineSensor.SensorR1) == 0) {
-            maqueenPlusV2.controlMotor(MyEnumMotor.RightMotor, MyEnumDir.Forward, 160)
-            maqueenPlusV2.controlMotor(MyEnumMotor.LeftMotor, MyEnumDir.Forward, 30)
+        if (maqueenPlusV2.readLineSensorState(maqueenPlusV2.MyEnumLineSensor.SensorL1) == 1 && maqueenPlusV2.readLineSensorState(maqueenPlusV2.MyEnumLineSensor.SensorR1) == 0) {
+            maqueenPlusV2.controlMotor(maqueenPlusV2.MyEnumMotor.RightMotor, maqueenPlusV2.MyEnumDir.Forward, 160)
+            maqueenPlusV2.controlMotor(maqueenPlusV2.MyEnumMotor.LeftMotor, maqueenPlusV2.MyEnumDir.Forward, 30)
         }
     }
 })

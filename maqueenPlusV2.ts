@@ -1,98 +1,99 @@
 
-//Motor selection enumeration
-enum MyEnumMotor{
-    //% block="left motor"
-    LeftMotor,
-    //% block="right motor"
-    RightMotor,
-    //% block="all motor"
-    AllMotor,
-};
-
-//Motor direction enumeration selection
-enum MyEnumDir{
-    //% block="rotate forward"
-    Forward,
-    //% block="backward"
-    Backward,
-};
-
-//LED light selection enumeration
-enum MyEnumLed{
-    //% block="left led light"
-    LeftLed,
-    //% block="right led light"
-    RightLed,
-    //% block="all led light"
-    AllLed,
-};
-
-//LED light switch enumeration selection
-enum MyEnumSwitch{
-    //% block="close"
-    Close,
-    //% block="open"
-    Open,
-};
-
-//Line sensor selection
-enum MyEnumLineSensor{
-    //% block="L1"
-    SensorL1,
-    //% block="M"
-    SensorM,
-    //% block="R1"
-    SensorR1,
-    //% block="L2"
-    SensorL2,
-    //% block="R2"
-    SensorR2,
-};
-/**
- * Well known colors for a NeoPixel strip
- */
-enum NeoPixelColors {
-    //% block=red
-    Red = 0xFF0000,
-    //% block=orange
-    Orange = 0xFFA500,
-    //% block=yellow
-    Yellow = 0xFFFF00,
-    //% block=green
-    Green = 0x00FF00,
-    //% block=blue
-    Blue = 0x0000FF,
-    //% block=indigo
-    Indigo = 0x4b0082,
-    //% block=violet
-    Violet = 0x8a2be2,
-    //% block=purple
-    Purple = 0xFF00FF,
-    //% block=white
-    White = 0xFFFFFF,
-    //% block=black
-    Black = 0x000000
-}
-
-const I2CADDR = 0x10;
-const ADC0_REGISTER = 0X1E;
-const ADC1_REGISTER = 0X20;
-const ADC2_REGISTER = 0X22;
-const ADC3_REGISTER = 0X24;
-const ADC4_REGISTER = 0X26;
-const LEFT_LED_REGISTER = 0X0B;
-const RIGHT_LED_REGISTER = 0X0C;
-const LEFT_MOTOR_REGISTER = 0X00;
-const RIGHT_MOTOR_REGISTER = 0X02;
-const LINE_STATE_REGISTER = 0X1D;
-const VERSION_CNT_REGISTER = 0X32;
-const VERSION_DATA_REGISTER = 0X33;
 
 /**
  * Custom graphic block
  */
 //% weight=100 color=#0fbc11 icon="\uf067" block="maqueenPlusV2"
 namespace maqueenPlusV2 {
+
+    //Motor selection enumeration
+    export enum MyEnumMotor {
+        //% block="left motor"
+        LeftMotor,
+        //% block="right motor"
+        RightMotor,
+        //% block="all motor"
+        AllMotor,
+    };
+
+    //Motor direction enumeration selection
+    export enum MyEnumDir {
+        //% block="rotate forward"
+        Forward,
+        //% block="backward"
+        Backward,
+    };
+
+    //LED light selection enumeration
+    export enum MyEnumLed {
+        //% block="left led light"
+        LeftLed,
+        //% block="right led light"
+        RightLed,
+        //% block="all led light"
+        AllLed,
+    };
+
+    //LED light switch enumeration selection
+    export enum MyEnumSwitch {
+        //% block="close"
+        Close,
+        //% block="open"
+        Open,
+    };
+
+    //Line sensor selection
+    export enum MyEnumLineSensor {
+        //% block="L1"
+        SensorL1,
+        //% block="M"
+        SensorM,
+        //% block="R1"
+        SensorR1,
+        //% block="L2"
+        SensorL2,
+        //% block="R2"
+        SensorR2,
+    };
+    /**
+     * Well known colors for a NeoPixel strip
+     */
+    export enum NeoPixelColors {
+        //% block=red
+        Red = 0xFF0000,
+        //% block=orange
+        Orange = 0xFFA500,
+        //% block=yellow
+        Yellow = 0xFFFF00,
+        //% block=green
+        Green = 0x00FF00,
+        //% block=blue
+        Blue = 0x0000FF,
+        //% block=indigo
+        Indigo = 0x4b0082,
+        //% block=violet
+        Violet = 0x8a2be2,
+        //% block=purple
+        Purple = 0xFF00FF,
+        //% block=white
+        White = 0xFFFFFF,
+        //% block=black
+        Black = 0x000000
+    }
+
+    const I2CADDR = 0x10;
+    const ADC0_REGISTER = 0X1E;
+    const ADC1_REGISTER = 0X20;
+    const ADC2_REGISTER = 0X22;
+    const ADC3_REGISTER = 0X24;
+    const ADC4_REGISTER = 0X26;
+    const LEFT_LED_REGISTER = 0X0B;
+    const RIGHT_LED_REGISTER = 0X0C;
+    const LEFT_MOTOR_REGISTER = 0X00;
+    const RIGHT_MOTOR_REGISTER = 0X02;
+    const LINE_STATE_REGISTER = 0X1D;
+    const VERSION_CNT_REGISTER = 0X32;
+    const VERSION_DATA_REGISTER = 0X33;
     
     let irstate: number;
     let neopixel_buf = pins.createBuffer(16 * 3);
