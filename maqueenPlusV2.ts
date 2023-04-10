@@ -102,9 +102,11 @@ namespace maqueenPlusV2 {
     }
     let _brightness = 255
     let state: number;
+
     /**
      *  Init I2C until success
      */
+
     //% weight=100
     //%block="initialize via I2C until success"
     export function I2CInit(): void {
@@ -134,13 +136,14 @@ namespace maqueenPlusV2 {
         basic.pause(500)
         basic.clearScreen()
     }
+
     /**
-     * TODO: Motor control module
+     * Control motor running
      * @param emotor Motor selection enumeration
      * @param edir   Motor direction selection enumeration
-     * @param speed  Motor speed control eg:100
-     * @return 
+     * @param speed  Motor speed control, eg:100
      */
+
     //% block="set %emotor direction %edir speed %speed"
     //% speed.min=0 speed.max=255
     //% weight=99
@@ -171,6 +174,12 @@ namespace maqueenPlusV2 {
             break;   
         }
     }
+
+    /**
+     * Control the motor to stop running
+     * @param emotor Motor selection enumeration
+     */
+
     //% block="set %emotor stop"
     //% weight=98
     export function controlMotorStop(emotor:MyEnumMotor):void{
@@ -202,11 +211,11 @@ namespace maqueenPlusV2 {
     }
 
     /**
-     * TODO: Control left and right LED light switch module
+     * Control left and right LED light switch module
      * @param eled LED lamp selection
      * @param eswitch Control LED light on or off
-     * @return 
      */
+
     //% block="control %eled %eSwitch"
     //% weight=97
     export function controlLED(eled:MyEnumLed, eSwitch:MyEnumSwitch):void{
@@ -234,10 +243,10 @@ namespace maqueenPlusV2 {
     }
 
     /**
-     * TODO: Get the state of the patrol sensor
-     * @param eline  Select the inspection sensor enumeration
-     * @return Return to select the patrol sensor state
+     * Get the state of the patrol sensor
+     * @param eline Select the inspection sensor enumeration
      */
+
     //% block="read line sensor %eline state"
     //% weight=96
     export function readLineSensorState(eline:MyEnumLineSensor):number{
@@ -265,10 +274,10 @@ namespace maqueenPlusV2 {
     }
     
     /**
-     * TODO: The ADC data of the patrol sensor is obtained
+     * The ADC data of the patrol sensor is obtained
      * @param eline Select the inspection sensor enumeration
-     * @return Return the AD value of the selected patrol sensor
      */
+
     //% block="read line sensor %eline  ADC data"
     //% weight=95
     export function readLineSensorData(eline:MyEnumLineSensor):number{
@@ -303,12 +312,13 @@ namespace maqueenPlusV2 {
         }
         return data;
     }
+
     /**
-     * DOTO:Acquiring ultrasonic data
-     * @param trig trig pin selection enumeration eg:DigitalPin.P13
-     * @param echo echo pin selection enumeration eg:DigitalPin.P14
-     * @return Returns the data obtained by the ultrasound
+     * Acquiring ultrasonic data
+     * @param trig trig pin selection enumeration, eg:DigitalPin.P13
+     * @param echo echo pin selection enumeration, eg:DigitalPin.P14
      */
+
     //% block="set ultrasonic sensor TRIG pin %trig ECHO pin %echo read data company:cm"
     //% weight=94
     export function readUltrasonic(trig:DigitalPin, echo:DigitalPin):number{
@@ -336,10 +346,9 @@ namespace maqueenPlusV2 {
     }
 
     /**
-     * DOTO: Getting the version number
-     * @param 
-     * @return Return version number
+     * Getting the version number
      */
+    
     //% block="read version"
     //% weight=2
     //% advanced=true
