@@ -12,8 +12,6 @@
         "README.md",
         "_locales/zh-cn/maqueenPlusV2-strings.json",
         "_locales/zh-tw/maqueenPlusV2-strings.json",
-        "enums.d.ts",
-        "shims.d.ts",
         "maqueenPlusV2.ts"
     ],
     "testFiles": [
