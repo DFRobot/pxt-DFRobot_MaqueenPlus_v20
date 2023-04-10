@@ -319,7 +319,7 @@ namespace maqueenPlusV2 {
      * @param echo echo pin selection enumeration, eg:DigitalPin.P14
      */
 
-    //% block="set ultrasonic sensor TRIG pin %trig ECHO pin %echo read data company:cm"
+    //% block="set ultrasonic sensor TRIG pin %trig ECHO pin %echo read data unit:cm"
     //% weight=94
     export function readUltrasonic(trig:DigitalPin, echo:DigitalPin):number{
         let data;
