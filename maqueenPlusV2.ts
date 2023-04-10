@@ -138,7 +138,7 @@ namespace maqueenPlusV2 {
     }
 
     /**
-     * Control motor running
+     * Control motor module running
      * @param emotor Motor selection enumeration
      * @param edir   Motor direction selection enumeration
      * @param speed  Motor speed control, eg:100
@@ -176,7 +176,7 @@ namespace maqueenPlusV2 {
     }
 
     /**
-     * Control the motor to stop running
+     * Control the motor module to stop running
      * @param emotor Motor selection enumeration
      */
 
@@ -213,7 +213,7 @@ namespace maqueenPlusV2 {
     /**
      * Control left and right LED light switch module
      * @param eled LED lamp selection
-     * @param eswitch Control LED light on or off
+     * @param eSwitch Control LED light on or off
      */
 
     //% block="control %eled %eSwitch"
@@ -381,7 +381,7 @@ namespace maqueenPlusV2 {
     }
 
     /**
-     * RGB LEDs light up from A to B
+     * The LED positions where you wish to begin and end
      * @param from  , eg: 1
      * @param to  , eg: 4
      */

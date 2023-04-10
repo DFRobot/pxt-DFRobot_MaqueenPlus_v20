@@ -1,0 +1,18 @@
+{
+    "maqueenPlusV2": "",
+    "maqueenPlusV2.I2CInit": "初始化I2C直到成功",
+    "maqueenPlusV2.controlMotor": "控制电机模块运行",
+    "maqueenPlusV2.controlMotorStop": "控制电机模块停止运行",
+    "maqueenPlusV2.controlLED": "控制左右LED开关模块",
+    "maqueenPlusV2.readLineSensorState": "获取巡线传感器状态",
+    "maqueenPlusV2.readLineSensorData": "获取巡线传感器的ADC数据",
+    "maqueenPlusV2.readUltrasonic": "获取超声波传感器的数据",
+    "maqueenPlusV2.readVersion": "获取版本号",
+    "maqueenPlusV2.rgb": "设置三种原色：红、绿、蓝",
+    "maqueenPlusV2.ledRange": "RGB灯起始灯号到结束灯号",
+    "maqueenPlusV2.setIndexColor": "设置指定的LED灯的颜色",
+    "maqueenPlusV2.showColor": "设置所有RGB灯的颜色",
+    "maqueenPlusV2.setBrightness": "设置RGB灯的亮度",
+    "maqueenPlusV2.ledBlank": "关闭所有RGB灯",
+    "maqueenPlusV2.ledRainbow": "RGB灯显示彩虹色"
+}
