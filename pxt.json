@@ -1,11 +1,11 @@
 {
     "name": "maqueenPlusV2",
-    "version": "2.1.0",
+    "version": "2.0.4",
     "description": "This is the latest version of Maqueen Plus, a programming robot for STEAM education.",
     "license": "MIT",
     "dependencies": {
         "core": "*",
-        "ir": "github:tangjie133/pxt-DFRobot_IR#v0.2.0",
+        "ir": "github:dfrobot/pxt-dfrobot_ir#v1.0.3",
         "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.2"
     },
     "files": [
@@ -13,10 +13,8 @@
         "_locales/zh-cn/maqueenPlusV2-strings.json",
         "_locales/zh-cn/maqueenPlusV2-jsdoc-strings.json",
         "_locales/zh-tw/maqueenPlusV2-strings.json",
-        "_locales/cs/DFRobot_MaqueenPlus_V2.0-strings.json",
-        "_locales/cs/DFRobot_MaqueenPlus_V2.0-jsdoc-strings.json",
-        "_locales/fr/DFRobot_MaqueenPlus_V2.0-strings.json",
-        "_locales/fr/DFRobot_MaqueenPlus_V2.0-jsdoc-strings.json",
+        "_locales/cs/maqueenPlusV2-strings.json",
+        "_locales/fr/maqueenPlusV2-strings.json",
         "maqueenPlusV2.ts"
     ],
     "testFiles": [
