@@ -13,6 +13,10 @@
         "_locales/zh-cn/maqueenPlusV2-strings.json",
         "_locales/zh-cn/maqueenPlusV2-jsdoc-strings.json",
         "_locales/zh-tw/maqueenPlusV2-strings.json",
+        "_locales/cs/DFRobot_MaqueenPlus_V2.0-strings.json",
+        "_locales/cs/DFRobot_MaqueenPlus_V2.0-jsdoc-strings.json",
+        "_locales/fr/DFRobot_MaqueenPlus_V2.0-strings.json",
+        "_locales/fr/DFRobot_MaqueenPlus_V2.0-jsdoc-strings.json",
         "maqueenPlusV2.ts"
     ],
     "testFiles": [
