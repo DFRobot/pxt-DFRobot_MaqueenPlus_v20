@@ -1,0 +1,21 @@
+{
+    "maqueenPlusV2.controlMotor": "Blok pro ovládání motorů. Umožňuje měnit směr a rychlost otáček.",
+    "maqueenPlusV2.controlLED": "Blok pro ovládání předních LED světel.",
+    "maqueenPlusV2.readLineSensorState": "Vrátí hodnotu 1, pokud vybraný senzor detekuje čáru, jinak vrátí 0.",
+    "maqueenPlusV2.readLineSensorData": "Vrátí analogovou hodnotu (celé číslo) z vybraného senzoru sledování čáry.",
+    "maqueenPlusV2.readUltrasonic": "Vrátí vzdálenost robota od překážky v cm. Ultrazvukový senzor ma dosah 2 až 500 cm a v případě chyby vrací hodnotu 0.",
+    "maqueenPlusV2.readUltrasonic|param|echo": "Pin pro čtení hodnoty signálu ECHO. Např. : DigitalPin.P14",
+    "maqueenPlusV2.readUltrasonic|param|trig": "Pin pro zápis signálu TRIG. Např. : DigitalPin.P13",
+    "maqueenPlusV2.readVersion": "Vrátí text s verzí robota.",
+    "maqueenPlusV2.controlMotorStop": "Blok zastaví vybraný motor (nebo oba motory).",
+    "maqueenPlusV2.setBrightness": "Nastaví intenzitu jasu všech RGB LED (projeví se až při následující změně barvy).",
+    "maqueenPlusV2.showColor": "Nastaví barvu všech RGB LED na novou hodnotu.",
+    "maqueenPlusV2.setIndexColor": "Nastaví barvu vybrané posloupnosti RGB LED. Hodnota parametru index určuje konkrétní LED nebo rozsah od-do vytvořený pomocí funkce ledRange.",
+    "maqueenPlusV2.ledRange": "Vytvoří index adresující posloupnost RGB LED (viz setIndexColor).",
+    "maqueenPlusV2.rgb": "Blok umožňuje definici vlastní barvy pomocí složek červená, zelená a modrá.",
+    "maqueenPlusV2.ledRainbow": "Postupně zobrazí barvy duhy na všech RGB LED.",
+    "maqueenPlusV2.ledBlank": "Zhasne všechny RGB LED.",
+    "maqueenPlusV2.I2CInit": "Blok spustí inicializaci I2C sběrnice a čeká, dokud úspěšně neproběhne. Tento blok je zapotřebí použít pouze jednou, a to při startu programu.",
+    "maqueenPlusV2.NeoPixelColors": "Definice nejběžnějších barev.",
+    "maqueenPlusV2": "Rozšíření pro DFRobot Maqueen Plus v2"
+}
