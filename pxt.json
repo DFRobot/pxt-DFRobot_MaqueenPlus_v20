@@ -22,7 +22,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "6.0.25",
+        "target": "6.0.22",
         "targetId": "microbit"
     },
     "supportedTargets": [
