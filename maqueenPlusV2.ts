@@ -1,9 +1,22 @@
 
+const enum PatrolSpeed {
+    //% block="1"
+    Speed1 = 1,
+    //% block="2"
+    Speed2 = 2,
+    //% block="3"
+    Speed3 = 3,
+    //% block="4"
+    Speed4 = 4,
+    //% block="5"
+    Speed5 = 5,
+}
 
 /**
  * Custom graphic block
  */
 //% weight=100 color=#0fbc11 icon="\uf067" block="maqueenPlusV2"
+//% groups="['V3']"
 namespace maqueenPlusV2 {
 
     //Motor selection enumeration
@@ -352,7 +365,7 @@ namespace maqueenPlusV2 {
      */
     
     //% block="read version"
-    //% weight=2
+    //% weight=30
     //% advanced=true
     export function readVersion():string{
         let version;
@@ -587,6 +600,281 @@ namespace maqueenPlusV2 {
         let b = b$ + m;
 
         return (r << 16) + (g << 8) + b;
+    }
+
+    /* maqueen PlusV3 */
+
+    export enum MotorType {
+        //% block="Motor133"
+        Motor133 = 1,
+        //% block="Motor266"
+        Motor266 = 2,
+    }
+
+    export enum Intersection {
+        //% block="Straight"
+        Straight = 1,
+        //% block="Left"
+        Left = 2,
+        //% block="Right"
+        Right = 3,
+        //% block="Stop"
+        Stop = 4,
+    }
+
+    export enum Trord {
+        //% block="Left"
+        Left = 2,
+        //% block="Right"
+        Right = 3,
+        //% block="Stop"
+        Stop = 4,
+    }
+
+    export enum LeftOrStraight {
+        //% block="Straight"
+        Straight = 1,
+        //% block="Left"
+        Left = 2,
+        //% block="Stop"
+        Stop = 4,
+    }
+
+    export enum RightOrStraight {
+        //% block="Straight"
+        Straight = 1,
+        //% block="Right"
+        Right = 3,
+        //% block="Stop"
+        Stop = 4,
+    }
+
+    export enum Patrolling {
+        //% block="ON"
+        ON = 1,
+        //% block="OFF"
+        OFF = 2,
+    }
+
+    export enum DirectionType {
+        //% block="Left"
+        Left = 1,
+        //% block="Right"
+        Right = 2,
+    }
+
+    export enum SpeedDirection {
+        //% block="CW"
+        SpeedCW = 1,
+        //% block="CCW"
+        SpeedCCW = 2,
+    }
+
+
+    /**
+     * return the corresponding PatrolSpeed number
+     */
+    //% blockId="PatrolSpeed_conv" block="%item"
+    //% weight=2 blockHidden=true
+    export function getPatrolSpeed(item: PatrolSpeed): number {
+        return item as number;
+    }
+
+    /**
+     * ...
+     */
+
+    //% block="system initialization module"
+    //% weight=25
+    //% group="V3"
+    //% advanced=true
+    export function systemInit() {
+
+    }
+
+    /**
+     * ...
+     * @param speed to speed ,eg: PatrolSpeed.Speed1
+     */
+
+    //% block="set up a patrol route speed %speed=PatrolSpeed_conv"
+    //% weight=24
+    //% group="V3"
+    //% advanced=true
+    export function setPatrolSpeed(speed: number) {
+
+    }
+
+    /**
+     * ...
+     * @param type to type ,eg: MotorType.Motor133
+     */
+
+    //% block="set up motor type %type"
+    //% weight=23
+    //% group="V3"
+    //% advanced=true
+    export function setMotorType(type: MotorType) {
+
+    }
+
+    /**
+     * ...
+     * @param mode to mode ,eg: Intersection.Straight
+     */
+
+    //% block="set up intersection %mode"
+    //% weight=22
+    //% group="V3"
+    //% advanced=true
+    export function setIntersectionRunMode(mode: Intersection) {
+
+    }
+
+    /**
+     * ...
+     * @param mode to mode ,eg: Trord.Left
+     */
+
+    //% block="set up Trord %mode"
+    //% weight=21
+    //% group="V3"
+    //% advanced=true
+    export function setTRordRunMode(mode: Trord) {
+
+    }
+
+    /**
+     * ...
+     * @param mode to mode ,eg: LeftOrStraight.Straight
+     */
+
+    //% block="set up left or straight %mode"
+    //% weight=20
+    //% group="V3"
+    //% advanced=true
+    export function setLeftOrStraightRunMode(mode: LeftOrStraight) {
+
+    }
+
+    /**
+     * ...
+     * @param mode to mode ,eg: RightOrStraight.Straight
+     */
+
+    //% block="set up right or straight %mode"
+    //% weight=19
+    //% group="V3"
+    //% advanced=true
+    export function setRightOrStraightRunMode(mode: RightOrStraight) {
+
+    }
+
+    /**
+     * ...
+     * @param patrol to patrol ,eg: Patrolling.ON
+     */
+
+    //% block="patrolling %patrol"
+    //% weight=18
+    //% group="V3"
+    //% advanced=true
+    export function patrolling(patrol: Patrolling) {
+
+    }
+
+    /**
+     * ...
+     */
+
+    //% block="intersection detecting"
+    //% weight=17
+    //% group="V3"
+    //% advanced=true
+    export function intersectionDetecting() {
+
+    }
+
+    /**
+     * ...
+     * @param type to type ,eg: DirectionType.Left
+     */
+
+    //% block="read light intensity %type"
+    //% weight=16
+    //% group="V3"
+    //% advanced=true
+    export function readLightIntensity(type: DirectionType) {
+
+    }
+
+    /**
+     * ...
+     * @param dir to dir ,eg: SpeedDirection.SpeedCW
+     * @param speed to speed ,eg: PatrolSpeed.Speed1
+     * @param distance to distance ,eg: 50
+     */
+
+    //% block="PID distance control %dir speed %speed=PatrolSpeed_conv distance %distance cm"
+    //% weight=15
+    //% group="V3"
+    //% advanced=true
+    export function pidControlDistance(dir: SpeedDirection, speed: number, distance: number) {
+
+    }
+
+    /**
+     * ...
+     * @param speed to speed ,eg: PatrolSpeed.Speed1
+     * @param angle to angle ,eg: 90
+     */
+
+    //% block="PID angle control speed %speed=PatrolSpeed_conv angle %angle"
+    //% angle.min=-180 angle.max=180 angle.defl=90
+    //% weight=14
+    //% group="V3"
+    //% advanced=true
+    export function pidControlAngle(speed: number, angle: number) {
+
+    }
+
+    /**
+     * ...
+     */
+
+    //% block="PID control stop"
+    //% weight=13
+    //% group="V3"
+    //% advanced=true
+    export function pidControlStop() {
+
+    }
+
+    /**
+     * ...
+     * @param type to type ,eg: DirectionType.Left
+     */
+
+    //% block="read real time speed %type wheel"
+    //% weight=12
+    //% group="V3"
+    //% advanced=true
+    export function readRealTimeSpeed(type: DirectionType) {
+
+    }
+
+    /**
+     * ...
+     * @param type to type ,eg: DirectionType.Left
+     * @param rgb to rgb ,eg: NeoPixelColors.Red
+     */
+
+    //% block="rgb led %type color %rgb"
+    //% weight=11
+    //% group="V3"
+    //% advanced=true
+    export function setRgblLed(type: DirectionType, rgb: NeoPixelColors) {
+
     }
 }
 
