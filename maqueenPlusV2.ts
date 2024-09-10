@@ -684,7 +684,7 @@ namespace maqueenPlusV2 {
      * ...
      */
 
-    //% block="system initialization module"
+    //% block="System Initialization"
     //% weight=25
     //% group="V3"
     //% advanced=true
@@ -697,7 +697,7 @@ namespace maqueenPlusV2 {
      * @param speed to speed ,eg: PatrolSpeed.Speed1
      */
 
-    //% block="set up a patrol route speed %speed=PatrolSpeed_conv"
+    //% block="Line Following Settings Speed %speed=PatrolSpeed_conv"
     //% weight=24
     //% group="V3"
     //% advanced=true
@@ -714,6 +714,7 @@ namespace maqueenPlusV2 {
     //% weight=23
     //% group="V3"
     //% advanced=true
+    //% deprecated=true
     export function setMotorType(type: MotorType) {
 
     }
@@ -723,7 +724,7 @@ namespace maqueenPlusV2 {
      * @param mode to mode ,eg: Intersection.Straight
      */
 
-    //% block="set up intersection %mode"
+    //% block="At Crossroads %mode"
     //% weight=22
     //% group="V3"
     //% advanced=true
@@ -736,7 +737,7 @@ namespace maqueenPlusV2 {
      * @param mode to mode ,eg: Trord.Left
      */
 
-    //% block="set up Trord %mode"
+    //% block="At T-junction %mode"
     //% weight=21
     //% group="V3"
     //% advanced=true
@@ -749,7 +750,7 @@ namespace maqueenPlusV2 {
      * @param mode to mode ,eg: LeftOrStraight.Straight
      */
 
-    //% block="set up left or straight %mode"
+    //% block="At Left Turn and Straight Intersection %mode"
     //% weight=20
     //% group="V3"
     //% advanced=true
@@ -762,7 +763,7 @@ namespace maqueenPlusV2 {
      * @param mode to mode ,eg: RightOrStraight.Straight
      */
 
-    //% block="set up right or straight %mode"
+    //% block="At Right Turn and Straight Intersection %mode"
     //% weight=19
     //% group="V3"
     //% advanced=true
@@ -775,7 +776,7 @@ namespace maqueenPlusV2 {
      * @param patrol to patrol ,eg: Patrolling.ON
      */
 
-    //% block="patrolling %patrol"
+    //% block="Line patrolling %patrol"
     //% weight=18
     //% group="V3"
     //% advanced=true
@@ -787,12 +788,12 @@ namespace maqueenPlusV2 {
      * ...
      */
 
-    //% block="intersection detecting"
+    //% block="Intersection Detection"
     //% weight=17
     //% group="V3"
     //% advanced=true
-    export function intersectionDetecting() {
-
+    export function intersectionDetecting(): number {
+        return 0;
     }
 
     /**
@@ -800,12 +801,12 @@ namespace maqueenPlusV2 {
      * @param type to type ,eg: DirectionType.Left
      */
 
-    //% block="read light intensity %type"
+    //% block="Read Light Values %type"
     //% weight=16
     //% group="V3"
     //% advanced=true
-    export function readLightIntensity(type: DirectionType) {
-
+    export function readLightIntensity(type: DirectionType): number {
+        return 0;
     }
 
     /**
@@ -815,7 +816,7 @@ namespace maqueenPlusV2 {
      * @param distance to distance ,eg: 50
      */
 
-    //% block="PID distance control %dir speed %speed=PatrolSpeed_conv distance %distance cm"
+    //% block="PID Distance Control %dir speed %speed=PatrolSpeed_conv distance %distance cm"
     //% weight=15
     //% group="V3"
     //% advanced=true
@@ -829,7 +830,7 @@ namespace maqueenPlusV2 {
      * @param angle to angle ,eg: 90
      */
 
-    //% block="PID angle control speed %speed=PatrolSpeed_conv angle %angle"
+    //% block="PID Angle Control speed %speed=PatrolSpeed_conv angle %angle"
     //% angle.min=-180 angle.max=180 angle.defl=90
     //% weight=14
     //% group="V3"
@@ -842,7 +843,7 @@ namespace maqueenPlusV2 {
      * ...
      */
 
-    //% block="PID control stop"
+    //% block="PID Control Stop"
     //% weight=13
     //% group="V3"
     //% advanced=true
@@ -855,12 +856,12 @@ namespace maqueenPlusV2 {
      * @param type to type ,eg: DirectionType.Left
      */
 
-    //% block="read real time speed %type wheel"
+    //% block="Read Real-time Speed %type wheel"
     //% weight=12
     //% group="V3"
     //% advanced=true
-    export function readRealTimeSpeed(type: DirectionType) {
-
+    export function readRealTimeSpeed(type: DirectionType): number {
+        return 0;
     }
 
     /**
@@ -869,7 +870,7 @@ namespace maqueenPlusV2 {
      * @param rgb to rgb ,eg: NeoPixelColors.Red
      */
 
-    //% block="rgb led %type color %rgb"
+    //% block="RGB Car Lights %type color %rgb"
     //% weight=11
     //% group="V3"
     //% advanced=true

@@ -64,7 +64,7 @@
     "maqueenPlusV2.Trord.Stop|block": "停止",
     "maqueenPlusV2.LeftOrStraight.Straight|block": "直行",
     "maqueenPlusV2.LeftOrStraight.Left|block": "左转",
-    "maqueenPlusV2.LeftOrStraight.Stop|block": "右转",
+    "maqueenPlusV2.LeftOrStraight.Stop|block": "停止",
     "maqueenPlusV2.RightOrStraight.Straight|block": "直行",
     "maqueenPlusV2.RightOrStraight.Right|block": "右转",
     "maqueenPlusV2.RightOrStraight.Stop|block": "停止",
