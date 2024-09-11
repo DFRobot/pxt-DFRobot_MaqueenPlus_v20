@@ -6,7 +6,7 @@ const enum PatrolSpeed {
     Speed2 = 2,
     //% block="3"
     Speed3 = 3,
-    //% block="4"
+    //% block="4"maqueenPlusV2.readLightIntensity(DirectionType.Left)
     Speed4 = 4,
     //% block="5"
     Speed5 = 5,
@@ -613,38 +613,38 @@ namespace maqueenPlusV2 {
 
     export enum Intersection {
         //% block="Straight"
-        Straight = 1,
+        Straight = 3,
         //% block="Left"
-        Left = 2,
+        Left = 1,
         //% block="Right"
-        Right = 3,
+        Right = 2,
         //% block="Stop"
         Stop = 4,
     }
 
     export enum Trord {
         //% block="Left"
-        Left = 2,
+        Left = 1,
         //% block="Right"
-        Right = 3,
+        Right = 2,
         //% block="Stop"
         Stop = 4,
     }
 
     export enum LeftOrStraight {
         //% block="Straight"
-        Straight = 1,
+        Straight = 3,
         //% block="Left"
-        Left = 2,
+        Left = 1,
         //% block="Stop"
         Stop = 4,
     }
 
     export enum RightOrStraight {
         //% block="Straight"
-        Straight = 1,
+        Straight = 3,
         //% block="Right"
-        Right = 3,
+        Right = 2,
         //% block="Stop"
         Stop = 4,
     }
@@ -689,7 +689,10 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function systemInit() {
-
+        let allBuffer = pins.createBuffer(2);
+        allBuffer[0]=73;
+        allBuffer[1] = 1;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -702,7 +705,10 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function setPatrolSpeed(speed: number) {
-
+        let allBuffer = pins.createBuffer(2);
+        allBuffer[0] = 63;
+        allBuffer[1] = speed;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -723,13 +729,16 @@ namespace maqueenPlusV2 {
      * ...
      * @param mode to mode ,eg: Intersection.Straight
      */
-
+maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     //% block="At Crossroads %mode"
     //% weight=22
     //% group="V3"
     //% advanced=true
     export function setIntersectionRunMode(mode: Intersection) {
-
+        let allBuffer = pins.createBuffer(2);
+        allBuffer[0] = 69;
+        allBuffer[1] = mode;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -742,7 +751,10 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function setTRordRunMode(mode: Trord) {
-
+        let allBuffer = pins.createBuffer(2);
+        allBuffer[0] = 70;
+        allBuffer[1] = mode;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -755,7 +767,10 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function setLeftOrStraightRunMode(mode: LeftOrStraight) {
-
+        let allBuffer = pins.createBuffer(2);
+        allBuffer[0] = 71;
+        allBuffer[1] = mode;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -768,7 +783,10 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function setRightOrStraightRunMode(mode: RightOrStraight) {
-
+        let allBuffer = pins.createBuffer(2);
+        allBuffer[0] = 72;
+        allBuffer[1] = mode;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -781,7 +799,13 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function patrolling(patrol: Patrolling) {
-
+        let allBuffer = pins.createBuffer(2);
+        if (patrol == Patrolling.ON)
+            allBuffer[1] = 0x04|0x01;
+        else
+            allBuffer[1] = 0x08;
+        allBuffer[0] = 60;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -793,7 +817,9 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function intersectionDetecting(): number {
-        return 0;
+        pins.i2cWriteNumber(I2CADDR, 61, NumberFormat.Int8LE);
+        let data = pins.i2cReadNumber(I2CADDR, 1);
+        return data;
     }
 
     /**
@@ -806,7 +832,13 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function readLightIntensity(type: DirectionType): number {
-        return 0;
+        let allBuffer = pins.createBuffer(4);
+        pins.i2cWriteNumber(I2CADDR, 78, NumberFormat.Int8LE);
+        allBuffer = pins.i2cReadBuffer(I2CADDR, 4);
+        if(type==DirectionType.Left)
+            return allBuffer[0] << 8 | allBuffer[1];
+        else
+            return allBuffer[2] << 8 | allBuffer[3];
     }
 
     /**
@@ -821,7 +853,19 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function pidControlDistance(dir: SpeedDirection, speed: number, distance: number) {
-
+        let allBuffer = pins.createBuffer(2);
+        if (distance >= 6000)
+            distance = 60000;
+        allBuffer[0]=64; allBuffer[1] =dir;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
+        allBuffer[0] = 85; allBuffer[1] = speed;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
+        allBuffer[0] = 65; allBuffer[1] = distance>>8;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
+        allBuffer[0] = 66; allBuffer[1] = distance ;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
+        allBuffer[0] = 60; allBuffer[1] = 0x04 | 0x02;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -836,7 +880,17 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function pidControlAngle(speed: number, angle: number) {
-
+        let allBuffer = pins.createBuffer(2);
+        allBuffer[0] = 67;
+        if (angle>=0)allBuffer[1] = 1;
+        else allBuffer[1] = 2;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
+        allBuffer[0] = 86; allBuffer[1] = speed;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
+        allBuffer[0] = 68; allBuffer[1] = angle;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
+        allBuffer[0] = 60; allBuffer[1] = 0x04 | 0x02;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -848,7 +902,10 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function pidControlStop() {
-
+        let allBuffer = pins.createBuffer(2);
+        allBuffer[0] = 60;
+        allBuffer[1] = 0x10;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -861,7 +918,13 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function readRealTimeSpeed(type: DirectionType): number {
-        return 0;
+        let allBuffer = pins.createBuffer(2);
+        pins.i2cWriteNumber(I2CADDR, 76, 1);
+        allBuffer = pins.i2cReadBuffer(I2CADDR, 2);
+        if (type == DirectionType.Left)
+            return allBuffer[0] / 5;
+        else
+            return allBuffer[1] / 5;
     }
 
     /**
@@ -875,6 +938,28 @@ namespace maqueenPlusV2 {
     //% group="V3"
     //% advanced=true
     export function setRgblLed(type: DirectionType, rgb: NeoPixelColors) {
+
+        let allBuffer = pins.createBuffer(2);
+        let buf = 0;
+    
+        switch (rgb) {
+            case 0xFF0000: buf = 1; break;
+            case 0x00FF00: buf = 2; break;
+            case 0xFFFF00: buf = 3; break;
+            case 0x0000FF: buf = 4; break;
+            case 0xFF00FF: buf = 5; break;
+            case 0x00FFFF: buf = 6; break;
+            case 0xFFFFFF: buf = 7; break;
+            case 0x000000: buf = 0; break;
+            default: buf = 0; break;
+        }
+        if (type == DirectionType.Left)
+            allBuffer[0] = 11;
+        else
+            allBuffer[0] = 12;
+
+        allBuffer[1] = buf;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
 
     }
 }
