@@ -22,7 +22,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "7.0.40",
+        "target": "7.0.42",
         "targetId": "microbit"
     },
     "supportedTargets": [
