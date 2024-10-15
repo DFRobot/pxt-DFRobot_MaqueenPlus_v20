@@ -73,6 +73,7 @@
   "maqueenPlusV2.Patrolling.OFF|block": "Arrêter",
   "maqueenPlusV2.DirectionType.Left|block": "gauche",
   "maqueenPlusV2.DirectionType.Right|block": "droite",
+  "maqueenPlusV2.DirectionType.All|block": "tout",
   "maqueenPlusV2.SpeedDirection.SpeedCW|block": "Avancer",
   "maqueenPlusV2.SpeedDirection.SpeedCCW|block": "Reculer",
   "{id:category}maqueenPlusV2":"DFRobotMaqueenPlusV2",
