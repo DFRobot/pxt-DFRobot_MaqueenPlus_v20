@@ -34,7 +34,6 @@
     "maqueenPlusV2.NeoPixelColors.Purple|block":"purpurovou",
     "maqueenPlusV2.NeoPixelColors.White|block":"bílou",
     "maqueenPlusV2.NeoPixelColors.Black|block":"černou",
-    "maqueenPlusV2.systemInit|block": "Inicializace systému",
     "maqueenPlusV2.setPatrolSpeed|block": "Nastavení sledování čáry Rychlost %speed=PatrolSpeed_conv",
     "maqueenPlusV2.setMotorType|block": "Typ motoru %type",
     "maqueenPlusV2.setIntersectionRunMode|block": "Na křižovatkách %mode",

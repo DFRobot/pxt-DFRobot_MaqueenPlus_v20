@@ -148,6 +148,11 @@ namespace maqueenPlusV2 {
                 `, 10)
         basic.pause(500)
         basic.clearScreen()
+        //V3 systemInit
+        let allBuffer = pins.createBuffer(2);
+        allBuffer[0] = 73;
+        allBuffer[1] = 1;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -661,6 +666,8 @@ namespace maqueenPlusV2 {
         Left = 1,
         //% block="Right"
         Right = 2,
+        //% block="All"
+        All = 3,
     }
 
     export enum SpeedDirection {
@@ -680,20 +687,6 @@ namespace maqueenPlusV2 {
         return item as number;
     }
 
-    /**
-     * ...
-     */
-
-    //% block="System Initialization"
-    //% weight=25
-    //% group="V3"
-    //% advanced=true
-    export function systemInit() {
-        let allBuffer = pins.createBuffer(2);
-        allBuffer[0]=73;
-        allBuffer[1] = 1;
-        pins.i2cWriteBuffer(I2CADDR, allBuffer)
-    }
 
     /**
      * ...
@@ -892,7 +885,6 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
         allBuffer[0] = 60; allBuffer[1] = 0x04 | 0x02;
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
-
     /**
      * ...
      */
@@ -953,14 +945,19 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
             case 0x000000: buf = 0; break;
             default: buf = 0; break;
         }
-        if (type == DirectionType.Left)
-            allBuffer[0] = 11;
-        else
-            allBuffer[0] = 12;
-
         allBuffer[1] = buf;
-        pins.i2cWriteBuffer(I2CADDR, allBuffer)
-
+        if (type == DirectionType.Left){
+            allBuffer[0] = 11;
+            pins.i2cWriteBuffer(I2CADDR, allBuffer)
+        }else if (type == DirectionType.Right){
+            allBuffer[0] = 12;
+            pins.i2cWriteBuffer(I2CADDR, allBuffer)
+        } else if (type == DirectionType.All){
+            allBuffer[0] = 11;
+            pins.i2cWriteBuffer(I2CADDR, allBuffer)
+            allBuffer[0] = 12;
+            pins.i2cWriteBuffer(I2CADDR, allBuffer)
+        }
     }
 }
 
