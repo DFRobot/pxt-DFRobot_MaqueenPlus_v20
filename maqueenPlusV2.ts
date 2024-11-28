@@ -424,11 +424,12 @@ namespace maqueenPlusV2 {
     }
     /**
      * Set the color of the specified LEDs
-     * @param index  , eg: 1
+     * @param index  , eg: DigitalPin.P15
      */
 
     //% weight=60
     //% index.min=0 index.max=3
+    //% pin.defl=DigitalPin.P15
     //% block="SET PIN|%pin RGB light |%index show color|%rgb=neopixel_colors"
     export function setIndexColor(pin:DigitalPin,index: number, rgb: number) {
         let f = index;
@@ -457,9 +458,11 @@ namespace maqueenPlusV2 {
 
     /**
      * Set the color of all RGB LEDs
+     * eg: DigitalPin.P15
      */
 
     //% weight=60
+    //% pin.defl=DigitalPin.P15
     //% block=" SET PIN|%pin RGB show color|%rgb=neopixel_colors"
     export function showColor(pin:DigitalPin,rgb: number) {
         let r = (rgb >> 16) * (_brightness / 255);
@@ -490,9 +493,11 @@ namespace maqueenPlusV2 {
 
     /**
      * Turn off all RGB LEDs
+     * eg: DigitalPin.P15
      */
 
     //% weight=40
+    //% pin.defl=DigitalPin.P15
     //% block="Set pin|%pin clear all RGB"
     export function ledBlank(pin: DigitalPin) {
        showColor(pin,0)
@@ -503,6 +508,7 @@ namespace maqueenPlusV2 {
      */
 
     //% weight=50
+    //% pin.defl=DigitalPin.P15
     //% startHue.defl=1
     //% endHue.defl=360
     //% startHue.min=0 startHue.max=360
