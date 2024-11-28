@@ -429,8 +429,8 @@ namespace maqueenPlusV2 {
 
     //% weight=60
     //% index.min=0 index.max=3
-    //% block="RGB light |%index show color|%rgb=neopixel_colors"
-    export function setIndexColor(index: number, rgb: number) {
+    //% block="SET PIN|%pin RGB light |%index show color|%rgb=neopixel_colors"
+    export function setIndexColor(pin:DigitalPin,index: number, rgb: number) {
         let f = index;
         let t = index;
         let r = (rgb >> 16) * (_brightness / 255);
@@ -451,7 +451,7 @@ namespace maqueenPlusV2 {
             neopixel_buf[i * 3 + 1] = Math.round(r)
             neopixel_buf[i * 3 + 2] = Math.round(b)
         }
-        ws2812b.sendBuffer(neopixel_buf, DigitalPin.P15)
+        ws2812b.sendBuffer(neopixel_buf, pin)
 
     }
 
@@ -460,8 +460,8 @@ namespace maqueenPlusV2 {
      */
 
     //% weight=60
-    //% block=" RGB show color |%rgb=neopixel_colors"
-    export function showColor(rgb: number) {
+    //% block=" SET PIN|%pin RGB show color|%rgb=neopixel_colors"
+    export function showColor(pin:DigitalPin,rgb: number) {
         let r = (rgb >> 16) * (_brightness / 255);
         let g = ((rgb >> 8) & 0xFF) * (_brightness / 255);
         let b = ((rgb) & 0xFF) * (_brightness / 255);
@@ -473,7 +473,7 @@ namespace maqueenPlusV2 {
             if ((i % 3) == 2)
                 neopixel_buf[i] = Math.round(b)
         }
-        ws2812b.sendBuffer(neopixel_buf, DigitalPin.P15)
+        ws2812b.sendBuffer(neopixel_buf, pin)
     }
 
     /**
@@ -493,9 +493,9 @@ namespace maqueenPlusV2 {
      */
 
     //% weight=40
-    //% block="clear all RGB"
-    export function ledBlank() {
-       showColor(0)
+    //% block="Set pin|%pin clear all RGB"
+    export function ledBlank(pin: DigitalPin) {
+       showColor(pin,0)
     }
 
     /**
@@ -507,8 +507,8 @@ namespace maqueenPlusV2 {
     //% endHue.defl=360
     //% startHue.min=0 startHue.max=360
     //% endHue.min=0 endHue.max=360
-    //% blockId=led_rainbow block="set RGB show rainbow color from|%startHue to|%endHue"
-    export function ledRainbow(startHue: number, endHue: number) {
+    //% blockId=led_rainbow block="SET PIN|%pin set RGB show rainbow color from|%startHue to|%endHue"
+    export function ledRainbow(pin:DigitalPin,startHue: number, endHue: number) {
         startHue = startHue >> 0;
         endHue = endHue >> 0;
         const saturation = 100;
@@ -560,7 +560,7 @@ namespace maqueenPlusV2 {
             }
             writeBuff(3, hsl(endHue, saturation, luminance));
         }
-        ws2812b.sendBuffer(neopixel_buf, DigitalPin.P15)
+        ws2812b.sendBuffer(neopixel_buf, pin)
     }
 
     export enum HueInterpolationDirection {
