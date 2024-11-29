@@ -688,7 +688,6 @@ namespace maqueenPlusV2 {
         Left = 1,
         //% block="Right"
         Right = 2,
-        //% block="All"
     }
 
     export enum SpeedDirection {
