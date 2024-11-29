@@ -6,7 +6,8 @@
     "dependencies": {
         "core": "*",
         "ir": "github:dfrobot/pxt-dfrobot_ir#v1.0.3",
-        "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.2"
+        "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.2",
+        "matrixLidarDistance": "github:dfrobot/pxt-DFRobot_matrixLidarDistanceSensor.git"
     },
     "files": [
         "README.md",
