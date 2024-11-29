@@ -74,6 +74,8 @@
   "maqueenPlusV2.DirectionType.Left|block": "gauche",
   "maqueenPlusV2.DirectionType.Right|block": "droite",
   "maqueenPlusV2.DirectionType.All|block": "tout",
+  "maqueenPlusV2.DirectionType2.Left|block": "gauche",
+  "maqueenPlusV2.DirectionType2.Right|block": "droite",
   "maqueenPlusV2.SpeedDirection.SpeedCW|block": "Avancer",
   "maqueenPlusV2.SpeedDirection.SpeedCCW|block": "Reculer",
   "{id:category}maqueenPlusV2":"DFRobotMaqueenPlusV2",

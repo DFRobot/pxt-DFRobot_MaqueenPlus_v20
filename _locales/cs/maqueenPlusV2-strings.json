@@ -68,6 +68,8 @@
     "maqueenPlusV2.DirectionType.Left|block": "vlevo",
     "maqueenPlusV2.DirectionType.Right|block": "vpravo",
     "maqueenPlusV2.DirectionType.All|block": "všechno",
+    "maqueenPlusV2.DirectionType2.Left|block": "vlevo",
+    "maqueenPlusV2.DirectionType2.Right|block": "vpravo",
     "maqueenPlusV2.SpeedDirection.SpeedCW|block": "Jízda vpřed",
     "maqueenPlusV2.SpeedDirection.SpeedCCW|block": "Couvání",
     "maqueenPlusV2|block":"Maqueen Plus v2",

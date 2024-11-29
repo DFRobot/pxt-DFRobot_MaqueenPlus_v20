@@ -72,6 +72,8 @@
     "maqueenPlusV2.DirectionType.Left|block": "左",
     "maqueenPlusV2.DirectionType.Right|block": "右",
     "maqueenPlusV2.DirectionType.All|block": "全部",
+    "maqueenPlusV2.DirectionType2.Left|block": "左",
+    "maqueenPlusV2.DirectionType2.Right|block": "右",
     "maqueenPlusV2.SpeedDirection.SpeedCW|block": "前进",
     "maqueenPlusV2.SpeedDirection.SpeedCCW|block": "后退",
     "maqueenPlusV2|block": "麦昆Plus V2",

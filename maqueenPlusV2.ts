@@ -683,6 +683,13 @@ namespace maqueenPlusV2 {
         //% block="All"
         All = 3,
     }
+    export enum DirectionType2 {
+        //% block="Left"
+        Left = 1,
+        //% block="Right"
+        Right = 2,
+        //% block="All"
+    }
 
     export enum SpeedDirection {
         //% block="CW"
@@ -838,11 +845,11 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     //% weight=16
     //% group="V3"
     //% advanced=true
-    export function readLightIntensity(type: DirectionType): number {
+    export function readLightIntensity(type: DirectionType2): number {
         let allBuffer = pins.createBuffer(4);
         pins.i2cWriteNumber(I2CADDR, 78, NumberFormat.Int8LE);
         allBuffer = pins.i2cReadBuffer(I2CADDR, 4);
-        if(type==DirectionType.Left)
+        if(type==DirectionType2.Left)
             return allBuffer[0] << 8 | allBuffer[1];
         else
             return allBuffer[2] << 8 | allBuffer[3];
