@@ -57,14 +57,14 @@ namespace maqueenPlusV2 {
 
     //Line sensor selection
     export enum MyEnumLineSensor {
+        //% block="L2"
+        SensorL2,
         //% block="L1"
         SensorL1,
         //% block="M"
         SensorM,
         //% block="R1"
         SensorR1,
-        //% block="L2"
-        SensorL2,
         //% block="R2"
         SensorR2,
     };
@@ -86,6 +86,25 @@ namespace maqueenPlusV2 {
         Indigo = 0x4b0082,
         //% block=violet
         Violet = 0x8a2be2,
+        //% block=purple
+        Purple = 0xFF00FF,
+        //% block=white
+        White = 0xFFFFFF,
+        //% block=black
+        Black = 0x000000
+    }
+    
+    export enum CarLightColors {
+        //% block=red
+        Red = 0xFF0000,
+        //% block=orange
+        Orange = 0xFFA500,
+        //% block=yellow
+        Yellow = 0xFFFF00,
+        //% block=green
+        Green = 0x00FF00,
+        //% block=blue
+        Blue = 0x0000FF,
         //% block=purple
         Purple = 0xFF00FF,
         //% block=white
@@ -319,7 +338,7 @@ namespace maqueenPlusV2 {
             case MyEnumLineSensor.SensorL1:
                 pins.i2cWriteNumber(I2CADDR, ADC3_REGISTER, NumberFormat.Int8LE);
                 let adc3Buffer = pins.i2cReadBuffer(I2CADDR, 2);
-                data = adc3Buffer[1] << 1 | adc3Buffer[0];
+                data = adc3Buffer[1] << 8 | adc3Buffer[0];
             break;
             default:
                 pins.i2cWriteNumber(I2CADDR, ADC4_REGISTER, NumberFormat.Int8LE);
@@ -336,7 +355,6 @@ namespace maqueenPlusV2 {
      * @param trig trig pin selection enumeration, eg:DigitalPin.P13
      * @param echo echo pin selection enumeration, eg:DigitalPin.P14
      */
-
     //% block="set ultrasonic sensor TRIG pin %trig ECHO pin %echo read data unit:cm"
     //% weight=94
     export function readUltrasonic(trig:DigitalPin, echo:DigitalPin):number{
@@ -344,23 +362,23 @@ namespace maqueenPlusV2 {
         pins.digitalWritePin(trig, 1);
         basic.pause(1);
         pins.digitalWritePin(trig, 0)
-        if(pins.digitalReadPin(echo) == 0){
+        if (pins.digitalReadPin(echo) == 0) {
             pins.digitalWritePin(trig, 0);
             pins.digitalWritePin(trig, 1);
             basic.pause(20);
             pins.digitalWritePin(trig, 0);
-            data = pins.pulseIn(echo, PulseValue.High,500*58);
-        }else{
+            data = pins.pulseIn(echo, PulseValue.High, 500 * 58);
+        } else {
             pins.digitalWritePin(trig, 1);
             pins.digitalWritePin(trig, 0);
             basic.pause(20);
             pins.digitalWritePin(trig, 0);
-            data = pins.pulseIn(echo, PulseValue.High,500*58)
+            data = pins.pulseIn(echo, PulseValue.High, 500 * 58)
         }
         data = data / 59;
-        if(data <= 0)
+        if (data <= 0)
             return 0;
-        if(data > 500)
+        if (data > 500)
             return 500;
         return Math.round(data);
     }
@@ -921,7 +939,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     }
 
     /**
-     * ...
+     * Gets the real-time speed in cm/s
      * @param type to type ,eg: DirectionType.Left
      */
 
@@ -929,11 +947,11 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     //% weight=12
     //% group="V3"
     //% advanced=true
-    export function readRealTimeSpeed(type: DirectionType): number {
+    export function readRealTimeSpeed(type: DirectionType2): number {
         let allBuffer = pins.createBuffer(2);
         pins.i2cWriteNumber(I2CADDR, 76, 1);
         allBuffer = pins.i2cReadBuffer(I2CADDR, 2);
-        if (type == DirectionType.Left)
+        if (type == DirectionType2.Left)
             return allBuffer[0] / 5;
         else
             return allBuffer[1] / 5;
@@ -942,14 +960,14 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     /**
      * ...
      * @param type to type ,eg: DirectionType.Left
-     * @param rgb to rgb ,eg: NeoPixelColors.Red
+     * @param rgb to rgb ,eg: CarLightColors.Red
      */
 
     //% block="RGB Car Lights %type color %rgb"
     //% weight=11
     //% group="V3"
     //% advanced=true
-    export function setRgblLed(type: DirectionType, rgb: NeoPixelColors) {
+    export function setRgblLed(type: DirectionType, rgb: CarLightColors) {
 
         let allBuffer = pins.createBuffer(2);
         let buf = 0;
