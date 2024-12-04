@@ -35,7 +35,7 @@
     "maqueenPlusV2.NeoPixelColors.White|block":"bílou",
     "maqueenPlusV2.NeoPixelColors.Black|block": "zhasnout",
     "maqueenPlusV2.CarLightColors.Red|block": "červená",
-    "maqueenPlusV2.CarLightColors.Orange|block": "oranžová",
+    "maqueenPlusV2.CarLightColors.Cyan|block": "modrý",
     "maqueenPlusV2.CarLightColors.Yellow|block": "žlutá",
     "maqueenPlusV2.CarLightColors.Green|block": "zelená",
     "maqueenPlusV2.CarLightColors.Blue|block": "modrá",

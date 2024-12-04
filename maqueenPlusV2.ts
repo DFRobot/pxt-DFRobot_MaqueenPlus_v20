@@ -96,21 +96,21 @@ namespace maqueenPlusV2 {
     
     export enum CarLightColors {
         //% block=red
-        Red = 0xFF0000,
-        //% block=orange
-        Orange = 0xFFA500,
-        //% block=yellow
-        Yellow = 0xFFFF00,
+        Red = 1,
         //% block=green
-        Green = 0x00FF00,
+        Green = 2,
+        //% block=yellow
+        Yellow = 3,
         //% block=blue
-        Blue = 0x0000FF,
+        Blue = 4,
         //% block=purple
-        Purple = 0xFF00FF,
+        Purple = 5,
+        //% block=cyan
+        Cyan = 6,
         //% block=white
-        White = 0xFFFFFF,
+        White = 7,
         //% block=black
-        Black = 0x000000
+        Black = 0
     }
 
     const I2CADDR = 0x10;
@@ -968,35 +968,22 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     //% group="V3"
     //% advanced=true
     export function setRgblLed(type: DirectionType, rgb: CarLightColors) {
-
         let allBuffer = pins.createBuffer(2);
-        let buf = 0;
-    
-        switch (rgb) {
-            case 0xFF0000: buf = 1; break;
-            case 0x00FF00: buf = 2; break;
-            case 0xFFFF00: buf = 3; break;
-            case 0x0000FF: buf = 4; break;
-            case 0xFF00FF: buf = 5; break;
-            case 0x00FFFF: buf = 6; break;
-            case 0xFFFFFF: buf = 7; break;
-            case 0x000000: buf = 0; break;
-            default: buf = 0; break;
-        }
-        allBuffer[1] = buf;
-        if (type == DirectionType.Left){
+        allBuffer[1] = rgb;
+        if (type == DirectionType.Left) {
             allBuffer[0] = 11;
             pins.i2cWriteBuffer(I2CADDR, allBuffer)
-        }else if (type == DirectionType.Right){
+        } else if (type == DirectionType.Right) {
             allBuffer[0] = 12;
             pins.i2cWriteBuffer(I2CADDR, allBuffer)
-        } else if (type == DirectionType.All){
+        } else if (type == DirectionType.All) {
             allBuffer[0] = 11;
             pins.i2cWriteBuffer(I2CADDR, allBuffer)
             allBuffer[0] = 12;
             pins.i2cWriteBuffer(I2CADDR, allBuffer)
         }
     }
+
 }
 
 

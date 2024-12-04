@@ -39,7 +39,7 @@
     "maqueenPlusV2.NeoPixelColors.White|block": "白",
     "maqueenPlusV2.NeoPixelColors.Black|block": "熄滅",
     "maqueenPlusV2.CarLightColors.Red|block": "紅",
-    "maqueenPlusV2.CarLightColors.Orange|block": "橙",
+    "maqueenPlusV2.CarLightColors.Cyan|block": "青",
     "maqueenPlusV2.CarLightColors.Yellow|block": "黃",
     "maqueenPlusV2.CarLightColors.Green|block": "綠",
     "maqueenPlusV2.CarLightColors.Blue|block": "藍",
