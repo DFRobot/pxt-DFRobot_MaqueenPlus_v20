@@ -349,37 +349,43 @@ namespace maqueenPlusV2 {
         }
         return data;
     }
-
+    function mydelayUs(unit: number):void{
+        let i
+        while((--unit)>0){
+            for (i = 0; i < 1; i++) {
+            } 
+        }
+    }
     /**
      * Acquiring ultrasonic data
      * @param trig trig pin selection enumeration, eg:DigitalPin.P13
      * @param echo echo pin selection enumeration, eg:DigitalPin.P14
+     * @note fit sr04/urm10   The difference between the two is that the echo sending time is different. 
+     * The sr04 sends the echo only after receiving the echo. When urm10 is triggered, it sends echo and stops after the echo
      */
     //% block="set ultrasonic sensor TRIG pin %trig ECHO pin %echo read data unit:cm"
     //% weight=94
+
     export function readUltrasonic(trig:DigitalPin, echo:DigitalPin):number{
         let data;
         pins.digitalWritePin(trig, 1);
-        basic.pause(1);
+        mydelayUs(10);
         pins.digitalWritePin(trig, 0)
-        if (pins.digitalReadPin(echo) == 0) {
-            pins.digitalWritePin(trig, 0);
+        data = pins.pulseIn(echo, PulseValue.High, 1000 * 58);
+        if(data==0) //repeat
+        {
             pins.digitalWritePin(trig, 1);
-            basic.pause(20);
+            mydelayUs(10);
             pins.digitalWritePin(trig, 0);
-            data = pins.pulseIn(echo, PulseValue.High, 500 * 58);
-        } else {
-            pins.digitalWritePin(trig, 1);
-            pins.digitalWritePin(trig, 0);
-            basic.pause(20);
-            pins.digitalWritePin(trig, 0);
-            data = pins.pulseIn(echo, PulseValue.High, 500 * 58)
+            data = pins.pulseIn(echo, PulseValue.High, 1000 * 58)
         }
-        data = data / 59;
+        //59.259 / ((331.5 + 0.6 * (float)(10)) * 100 / 1000000.0) // The ultrasonic velocity (cm/us) compensated by temperature
+        data = data / 59.259;
+
         if (data <= 0)
             return 0;
-        if (data > 500)
-            return 500;
+        if (data > 300)
+            return 300;
         return Math.round(data);
     }
 
@@ -727,7 +733,7 @@ namespace maqueenPlusV2 {
 
 
     /**
-     * ...
+     * Set the line-following speed of the trolley.
      * @param speed to speed ,eg: PatrolSpeed.Speed1
      */
 
@@ -743,7 +749,7 @@ namespace maqueenPlusV2 {
     }
 
     /**
-     * ...
+     * Set motor type
      * @param type to type ,eg: MotorType.Motor133
      */
 
@@ -760,7 +766,7 @@ namespace maqueenPlusV2 {
      * ...
      * @param mode to mode ,eg: Intersection.Straight
      */
-maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
+    maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     //% block="At Crossroads %mode"
     //% weight=22
     //% group="V3"
@@ -821,7 +827,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     }
 
     /**
-     * ...
+     * Set the line-following function.
      * @param patrol to patrol ,eg: Patrolling.ON
      */
 
@@ -840,7 +846,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     }
 
     /**
-     * ...
+     * Get the status of the intersection
      */
 
     //% block="Intersection Detection"
@@ -854,7 +860,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     }
 
     /**
-     * ...
+     * Get the light intensity
      * @param type to type ,eg: DirectionType.Left
      */
 
@@ -873,7 +879,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     }
 
     /**
-     * ...
+     * Set the distance controlled by PID.
      * @param dir to dir ,eg: SpeedDirection.SpeedCW
      * @param speed to speed ,eg: PatrolSpeed.Speed1
      * @param distance to distance ,eg: 50
@@ -900,7 +906,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     }
 
     /**
-     * ...
+     * Set the control angle of PID.
      * @param speed to speed ,eg: PatrolSpeed.Speed1
      * @param angle to angle ,eg: 90
      */
@@ -924,7 +930,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
     /**
-     * ...
+     * Set the PID (Proportional-Integral-Derivative)
      */
 
     //% block="PID Control Stop"
@@ -958,7 +964,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     }
 
     /**
-     * ...
+     * Set the color of the vehicle lights.
      * @param type to type ,eg: DirectionType.Left
      * @param rgb to rgb ,eg: CarLightColors.Red
      */
