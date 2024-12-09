@@ -426,13 +426,13 @@ namespace maqueenPlusV2 {
 
     /**
      * The LED positions where you wish to begin and end
-     * @param from  , eg: 1
-     * @param to  , eg: 4
+     * @param from  , eg: 0
+     * @param to  , eg: 3
      */
 
     //% weight=60
     //% from.min=0 from.max=3
-    //% to.min=1 to.max=4
+    //% to.min=0 to.max=3
     //% block="range from |%from with|%to leds"
     export function ledRange(from: number, to: number): number {
         return ((from) << 16) + (2 << 8) + (to);
