@@ -84,6 +84,6 @@
     "maqueenPlusV2.DirectionType2.Right|block": "右",
     "maqueenPlusV2.SpeedDirection.SpeedCW|block": "前進",
     "maqueenPlusV2.SpeedDirection.SpeedCCW|block": "後退",
-    "maqueenPlusV2|block": "麥昆Plus V2",
-    "{id:category}maqueenPlusV2": "麥昆Plus V2"
+    "maqueenPlusV2|block": "麥昆Plus V2&V3",
+    "{id:category}maqueenPlusV2": "麥昆Plus V2&V3"
 }

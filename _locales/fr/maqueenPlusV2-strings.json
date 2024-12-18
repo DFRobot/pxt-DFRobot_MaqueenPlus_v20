@@ -86,6 +86,6 @@
   "maqueenPlusV2.DirectionType2.Right|block": "droite",
   "maqueenPlusV2.SpeedDirection.SpeedCW|block": "Avancer",
   "maqueenPlusV2.SpeedDirection.SpeedCCW|block": "Reculer",
-  "{id:category}maqueenPlusV2":"DFRobotMaqueenPlusV2",
+  "{id:category}maqueenPlusV2":"DFRobotMaqueenPlusV2&V3",
   "{id:category}Ws2812b":"Ws2812b"
 }
