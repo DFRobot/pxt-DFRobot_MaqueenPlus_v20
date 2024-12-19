@@ -920,7 +920,10 @@ namespace maqueenPlusV2 {
         let allBuffer = pins.createBuffer(2);
         allBuffer[0] = 67;
         if (angle>=0)allBuffer[1] = 1;
-        else allBuffer[1] = 2;
+        else{
+            allBuffer[1] = 2;
+            angle = -angle;
+        } 
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
         allBuffer[0] = 86; allBuffer[1] = speed;
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
