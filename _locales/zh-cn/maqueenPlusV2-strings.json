@@ -65,7 +65,7 @@
     "maqueenPlusV2.Intersection.Straight|block": "直行",
     "maqueenPlusV2.Intersection.Left|block": "左转",
     "maqueenPlusV2.Intersection.Right|block": "右转",
-    "maqueenPlusV2.Intersection.Stop|block": "停止",
+    "maqueenPlusV2.Intersection.Stop|block": "停止巡线",
     "maqueenPlusV2.Trord.Left|block": "左转",
     "maqueenPlusV2.Trord.Right|block": "右转",
     "maqueenPlusV2.Trord.Stop|block": "停止巡线",
