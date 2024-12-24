@@ -143,6 +143,13 @@ namespace maqueenPlusV2 {
     //%block="initialize via I2C until success"
     export function I2CInit(): void {
         let Version_v = 0;
+        //V3 systemReset
+        let allBuffer = pins.createBuffer(2);
+        allBuffer[0] = 0x49;
+        allBuffer[1] = 1;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer); 
+        basic.pause(100);//waiting  reset
+
         pins.i2cWriteNumber(I2CADDR, 0x32, NumberFormat.Int8LE);
         Version_v = pins.i2cReadNumber(I2CADDR, NumberFormat.Int8LE);
         while (Version_v == 0) {
@@ -167,11 +174,6 @@ namespace maqueenPlusV2 {
                 `, 10)
         basic.pause(500)
         basic.clearScreen()
-        //V3 systemInit
-        let allBuffer = pins.createBuffer(2);
-        allBuffer[0] = 73;
-        allBuffer[1] = 1;
-        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -872,7 +874,7 @@ namespace maqueenPlusV2 {
         let allBuffer = pins.createBuffer(4);
         pins.i2cWriteNumber(I2CADDR, 78, NumberFormat.Int8LE);
         allBuffer = pins.i2cReadBuffer(I2CADDR, 4);
-        if(type==DirectionType2.Left)
+        if (type == DirectionType2.Left)
             return allBuffer[0] << 8 | allBuffer[1];
         else
             return allBuffer[2] << 8 | allBuffer[3];
