@@ -55,8 +55,8 @@
     "maqueenPlusV2.patrolling|block": "巡線 %patrol",
     "maqueenPlusV2.intersectionDetecting|block": "路口檢測",
     "maqueenPlusV2.readLightIntensity|block": "讀取光線值 %type",
-    "maqueenPlusV2.pidControlDistance|block": "PID距離控制 %dir 速度 %speed=PatrolSpeed_conv 距離 %distance cm",
-    "maqueenPlusV2.pidControlAngle|block": "PID角度控制 速度 %speed=PatrolSpeed_conv 角度 %angle °",
+    "maqueenPlusV2.pidControlDistance|block": "PID 距離控制 % dir 距離 % distance cm % interruption 中斷",
+    "maqueenPlusV2.pidControlAngle|block": "PID 角度控制 角度 % angle° % interruption 中斷",
     "maqueenPlusV2.pidControlStop|block": "PID控制停止",
     "maqueenPlusV2.readRealTimeSpeed|block": "讀取%type轮的實時速度（CM/S）",
     "maqueenPlusV2.setRgblLed|block": "RGB車燈 %type 顏色 %rgb",
@@ -84,6 +84,8 @@
     "maqueenPlusV2.DirectionType2.Right|block": "右",
     "maqueenPlusV2.SpeedDirection.SpeedCW|block": "前進",
     "maqueenPlusV2.SpeedDirection.SpeedCCW|block": "後退",
+    "maqueenPlusV2.MyInterruption.Allowed|block": "允許",
+    "maqueenPlusV2.MyInterruption.NotAllowed|block": "不允許",
     "maqueenPlusV2|block": "麥昆Plus V2&V3",
     "{id:category}maqueenPlusV2": "麥昆Plus V2&V3"
 }

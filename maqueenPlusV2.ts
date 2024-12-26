@@ -29,6 +29,14 @@ namespace maqueenPlusV2 {
         AllMotor,
     };
 
+    //PID interruption
+    export enum MyInterruption {
+        //% block="Allow interruption"
+        Allowed,
+        //% block="No interruptions allowed"
+        NotAllowed,
+    };
+
     //Motor direction enumeration selection
     export enum MyEnumDir {
         //% block="rotate forward"
@@ -887,11 +895,12 @@ namespace maqueenPlusV2 {
      * @param distance to distance ,eg: 50
      */
 
-    //% block="PID Distance Control %dir speed %speed=PatrolSpeed_conv distance %distance cm"
+    //% block="PID Distance Control %dir  distance %distance cm   %interruption  interruption"
     //% weight=15
     //% group="V3"
     //% advanced=true
-    export function pidControlDistance(dir: SpeedDirection, speed: number, distance: number) {
+    export function pidControlDistance(dir: SpeedDirection, distance: number, interruption: MyInterruption) {
+        let speed =2 ;
         let allBuffer = pins.createBuffer(2);
         if (distance >= 6000)
             distance = 60000;
@@ -905,6 +914,17 @@ namespace maqueenPlusV2 {
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
         allBuffer[0] = 60; allBuffer[1] = 0x04 | 0x02;
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
+
+        if (interruption == MyInterruption.NotAllowed){
+            pins.i2cWriteNumber(I2CADDR, 87, NumberFormat.Int8LE);
+            let flagBuffer = pins.createBuffer(1);
+            flagBuffer = pins.i2cReadBuffer(I2CADDR, 1);
+            while (flagBuffer[0]==1){
+                basic.pause(10);
+                flagBuffer=pins.i2cReadBuffer(I2CADDR, 1);  
+            }
+        }
+
     }
 
     /**
@@ -913,12 +933,13 @@ namespace maqueenPlusV2 {
      * @param angle to angle ,eg: 90
      */
 
-    //% block="PID Angle Control speed %speed=PatrolSpeed_conv angle %angle"
+    //% block="PID Angle Control speed  angle %angle %interruption  interruption"
     //% angle.min=-180 angle.max=180 angle.defl=90
     //% weight=14
     //% group="V3"
     //% advanced=true
-    export function pidControlAngle(speed: number, angle: number) {
+    export function pidControlAngle(angle: number, interruption: MyInterruption) {
+        let speed = 2;
         let allBuffer = pins.createBuffer(2);
         allBuffer[0] = 67;
         if (angle>=0)allBuffer[1] = 1;
@@ -933,6 +954,17 @@ namespace maqueenPlusV2 {
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
         allBuffer[0] = 60; allBuffer[1] = 0x04 | 0x02;
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
+
+        if (interruption == MyInterruption.NotAllowed) {
+            pins.i2cWriteNumber(I2CADDR, 87, NumberFormat.Int8LE);
+            let flagBuffer = pins.createBuffer(1);
+            flagBuffer = pins.i2cReadBuffer(I2CADDR, 1);
+            while (flagBuffer[0] == 1) {
+                basic.pause(10);
+                flagBuffer = pins.i2cReadBuffer(I2CADDR, 1);
+            }
+        }
+
     }
     /**
      * Set the PID (Proportional-Integral-Derivative)
