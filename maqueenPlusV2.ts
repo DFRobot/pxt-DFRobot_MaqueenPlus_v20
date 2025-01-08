@@ -366,6 +366,16 @@ namespace maqueenPlusV2 {
             } 
         }
     }
+
+    /**
+     * Acquiring ultrasonic data
+     */
+    //% block="read ultrasonic sensor data unit:cm"
+    //% weight=94
+
+    export function readUltrasonicSimple():number{
+        return readUltrasonic(DigitalPin.P13, DigitalPin.P14)
+    }
     /**
      * Acquiring ultrasonic data
      * @param trig trig pin selection enumeration, eg:DigitalPin.P13
@@ -375,6 +385,7 @@ namespace maqueenPlusV2 {
      */
     //% block="set ultrasonic sensor TRIG pin %trig ECHO pin %echo read data unit:cm"
     //% weight=94
+    //% advanced=true
 
     export function readUltrasonic(trig:DigitalPin, echo:DigitalPin):number{
         let data;
