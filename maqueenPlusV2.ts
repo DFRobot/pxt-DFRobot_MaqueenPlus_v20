@@ -579,7 +579,7 @@ namespace maqueenPlusV2 {
     //% endHue.defl=360
     //% startHue.min=0 startHue.max=360
     //% endHue.min=0 endHue.max=360
-    //% blockId=led_rainbow block="Built-in RGB show rainbow color from|%startHue to|%endHue"
+    //% block="Built-in RGB show rainbow color from|%startHue to|%endHue"
     export function ledRainbowSimple(startHue: number, endHue: number) {
         ledRainbow(DigitalPin.P15, startHue, endHue);
     }
@@ -590,7 +590,7 @@ namespace maqueenPlusV2 {
     //% endHue.defl=360
     //% startHue.min=0 startHue.max=360
     //% endHue.min=0 endHue.max=360
-    //% blockId=led_rainbow block="SET PIN|%pin set RGB show rainbow color from|%startHue to|%endHue"
+    //% block="SET PIN|%pin set RGB show rainbow color from|%startHue to|%endHue"
     //% advanced=true
     export function ledRainbow(pin:DigitalPin,startHue: number, endHue: number) {
         startHue = startHue >> 0;
