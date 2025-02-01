@@ -1,7 +1,7 @@
 {
     "name": "maqueenPlusV2",
     "version": "2.2.16",
-    "description": "Nederlandstalige blokjes voor de Maqueen Plus!",
+    "description": "This is the latest version of Maqueen Plus, a programming robot for STEAM education.",
     "license": "MIT",
     "dependencies": {
         "core": "*",
