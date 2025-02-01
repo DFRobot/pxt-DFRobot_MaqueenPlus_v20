@@ -62,7 +62,7 @@
   "maqueenPlusV2.pidControlAngle|block": "PID Hoekcontrole: hoek %angle °, onderbreking %interruption",
   "maqueenPlusV2.pidControlStop|block": "Schakel PID regelaar uit",
   "maqueenPlusV2.readRealTimeSpeed|block": "Huidige snelheid %type",
-  "maqueenPlusV2.setIndexColor|block":"Zet RGB LED|%index op pin|%pin op kleur|%rgb=neopixel_colors",
+  "maqueenPlusV2.setIndexColor|block":"Pin |%pin : zet RGB LED|%index op kleur|%rgb=neopixel_colors",
   "maqueenPlusV2.setRgblLed|block": "Zet RGB LED %type op kleur %rgb",
   "maqueenPlusV2.showColor|block": "Zet RGB LEDs op pin|%pin op kleur |%rgb=neopixel_colors",
   "maqueenPlusV2.MotorType.Motor133|block": "Motor 133",
