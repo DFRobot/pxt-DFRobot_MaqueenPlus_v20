@@ -474,8 +474,16 @@ namespace maqueenPlusV2 {
 
     //% weight=60
     //% index.min=0 index.max=3
+    //% block="Built-in RGB light |%index show color|%rgb=neopixel_colors"
+    export function setIndexColorSimple(index: number, rgb: number) {
+        setIndexColor(DigitalPin.P15, index, rgb);
+    }
+
+    //% weight=60
+    //% index.min=0 index.max=3
     //% pin.defl=DigitalPin.P15
     //% block="SET PIN|%pin RGB light |%index show color|%rgb=neopixel_colors"
+    //% advanced=true
     export function setIndexColor(pin:DigitalPin,index: number, rgb: number) {
         let f = index;
         let t = index;
@@ -501,6 +509,12 @@ namespace maqueenPlusV2 {
 
     }
 
+    //% weight=60
+    //% block="Built-in RGB show color|%rgb=neopixel_colors"
+    export function showColorSimple(rgb: number) {
+        showColor(DigitalPin.P15, rgb);
+    }
+
     /**
      * Set the color of all RGB LEDs
      * eg: DigitalPin.P15
@@ -509,6 +523,7 @@ namespace maqueenPlusV2 {
     //% weight=60
     //% pin.defl=DigitalPin.P15
     //% block=" SET PIN|%pin RGB show color|%rgb=neopixel_colors"
+    //% advanced=true
     export function showColor(pin:DigitalPin,rgb: number) {
         let r = (rgb >> 16) * (_brightness / 255);
         let g = ((rgb >> 8) & 0xFF) * (_brightness / 255);
@@ -542,8 +557,15 @@ namespace maqueenPlusV2 {
      */
 
     //% weight=40
+    //% block="Clear all built-in RGB"
+    export function ledBlankSimple() {
+        showColor(DigitalPin.P15,0)
+     }
+
+    //% weight=40
     //% pin.defl=DigitalPin.P15
     //% block="Set pin|%pin clear all RGB"
+    //% advanced=true
     export function ledBlank(pin: DigitalPin) {
        showColor(pin,0)
     }
@@ -553,12 +575,23 @@ namespace maqueenPlusV2 {
      */
 
     //% weight=50
+    //% startHue.defl=1
+    //% endHue.defl=360
+    //% startHue.min=0 startHue.max=360
+    //% endHue.min=0 endHue.max=360
+    //% blockId=led_rainbow block="Built-in RGB show rainbow color from|%startHue to|%endHue"
+    export function ledRainbowSimple(startHue: number, endHue: number) {
+        ledRainbow(DigitalPin.P15, startHue, endHue);
+    }
+
+    //% weight=50
     //% pin.defl=DigitalPin.P15
     //% startHue.defl=1
     //% endHue.defl=360
     //% startHue.min=0 startHue.max=360
     //% endHue.min=0 endHue.max=360
     //% blockId=led_rainbow block="SET PIN|%pin set RGB show rainbow color from|%startHue to|%endHue"
+    //% advanced=true
     export function ledRainbow(pin:DigitalPin,startHue: number, endHue: number) {
         startHue = startHue >> 0;
         endHue = endHue >> 0;
