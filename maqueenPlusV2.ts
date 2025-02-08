@@ -458,9 +458,10 @@ namespace maqueenPlusV2 {
     }
     /**
      * Set the color of the specified LEDs
+     * @param pin , pin to control the leds 
      * @param index  , eg: DigitalPin.P15
+     * @param rgb , color
      */
-
     //% weight=60
     //% index.min=0 index.max=3
     //% pin.defl=DigitalPin.P15
@@ -493,6 +494,10 @@ namespace maqueenPlusV2 {
     /**
      * Set the color of all RGB LEDs
      * eg: DigitalPin.P15
+     * 
+     * @param pin
+     * @param rgb
+     * 
      */
 
     //% weight=60
@@ -528,6 +533,8 @@ namespace maqueenPlusV2 {
     /**
      * Turn off all RGB LEDs
      * eg: DigitalPin.P15
+     * 
+     * @param pin, pin to control the leds
      */
 
     //% weight=40
@@ -538,7 +545,10 @@ namespace maqueenPlusV2 {
     }
 
     /**
-     * RGB LEDs display rainbow colors 
+     * RGB LEDs display rainbow colors
+     * @param pin , led control pin
+     * @param startHue, start value
+     * @param endHuem end value 
      */
 
     //% weight=50
@@ -891,8 +901,10 @@ namespace maqueenPlusV2 {
     /**
      * Set the distance controlled by PID.
      * @param dir to dir ,eg: SpeedDirection.SpeedCW
-     * @param speed to speed ,eg: PatrolSpeed.Speed1
+     * 
      * @param distance to distance ,eg: 50
+     * @param interruption tot onderbreking
+     * 
      */
 
     //% block="PID Distance Control %dir  distance %distance cm   %interruption  interruption"
@@ -929,8 +941,9 @@ namespace maqueenPlusV2 {
 
     /**
      * Set the control angle of PID.
-     * @param speed to speed ,eg: PatrolSpeed.Speed1
+     * 
      * @param angle to angle ,eg: 90
+     * @param interruption
      */
 
     //% block="PID Angle Control speed  angle %angle %interruption  interruption"
