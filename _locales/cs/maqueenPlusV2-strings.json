@@ -54,7 +54,7 @@
     "maqueenPlusV2.pidControlDistance|block": "PID kontrola vzdálenosti %dir Rychlost %speed=PatrolSpeed_conv vzdálenost %distance cm",
     "maqueenPlusV2.pidControlAngle|block": "PID kontrola úhlu Rychlost %speed=PatrolSpeed_conv úhlu %angle °",
     "maqueenPlusV2.pidControlStop|block": "Zastavení PID kontroly",
-    "maqueenPlusV2.readRealTimeSpeed|block": "Čtení %type rychlosti kola v reálném čase CM/S",
+    "maqueenPlusV2.readRealTimeSpeed|block": "Čtení %type rychlosti kola v reálném čase cm/s",
     "maqueenPlusV2.setRgblLed|block": "RGB světla auta %type %rgb",
     "maqueenPlusV2.MotorType.Motor133|block": "133",
     "maqueenPlusV2.MotorType.Motor266|block": "266",
