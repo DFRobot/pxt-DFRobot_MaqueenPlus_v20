@@ -6,7 +6,7 @@ const enum PatrolSpeed {
     Speed2 = 2,
     //% block="3"
     Speed3 = 3,
-    //% block="4"maqueenPlusV2.readLightIntensity(DirectionType.Left)
+    //% block="4"
     Speed4 = 4,
     //% block="5"
     Speed5 = 5,

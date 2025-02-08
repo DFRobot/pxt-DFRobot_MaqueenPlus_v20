@@ -1,0 +1,23 @@
+{
+    "maqueenPlusV2.controlMotor": "Bloque para controlar los motores. Permite cambiar la dirección y la velocidad de rotación.",
+    "maqueenPlusV2.controlLED": "Bloque para controlar las luces LED frontales.",
+    "maqueenPlusV2.readLineSensorState": "Devuelve un valor de 1 si el sensor seleccionado detecta una línea, de lo contrario devuelve 0.",
+    "maqueenPlusV2.readLineSensorData": "Devuelve un valor analógico (entero) del sensor de seguimiento de línea seleccionado.",
+    "maqueenPlusV2.readUltrasonic": "Devuelve la distancia del robot al obstáculo en cm. El sensor ultrasónico tiene un rango de 2 a 500 cm y devuelve 0 en caso de error.",
+    "maqueenPlusV2.readUltrasonic|param|echo": "Pin para leer el valor de la señal ECHO. Por ejemplo: DigitalPin.P14",
+    "maqueenPlusV2.readUltrasonic|param|trig": "Pin para escribir la señal TRIG. Por ejemplo: DigitalPin.P13",
+    "maqueenPlusV2.readVersion": "Devuelve un texto con la versión del robot.",
+    "maqueenPlusV2.controlMotorStop": "Bloque que detiene el motor seleccionado (o ambos motores).",
+    "maqueenPlusV2.setBrightness": "Establece la intensidad del brillo de todos los LED RGB (se aplicará en el siguiente cambio de color).",
+    "maqueenPlusV2.showColor": "Establece el color de todos los LED RGB a un nuevo valor.",
+    "maqueenPlusV2.setIndexColor": "Establece el color de una secuencia específica de LED RGB. El parámetro índice determina un LED específico o un rango definido mediante la función ledRange.",
+    "maqueenPlusV2.ledRange": "Crea un índice que dirige una secuencia de LED RGB (ver setIndexColor).",
+    "maqueenPlusV2.rgb": "Bloque que permite definir un color personalizado mediante las componentes rojo, verde y azul.",
+    "maqueenPlusV2.ledRainbow": "Muestra gradualmente los colores del arcoíris en todos los LED RGB.",
+    "maqueenPlusV2.ledBlank": "Apaga todos los LED RGB.",
+    "maqueenPlusV2.I2CInit": "Bloque que inicia la inicialización del bus I2C y espera hasta que se complete con éxito. Este bloque debe usarse solo una vez al inicio del programa.",
+    "maqueenPlusV2.NeoPixelColors": "Definición de los colores más comunes.",
+    "maqueenPlusV2.intersectionDetecting": "Valor de retorno: 1 representa una intersección, 2 representa una intersección en T (giro a la izquierda y derecha), 3 representa una intersección con giro a la izquierda y avance recto, 4 representa una intersección con giro a la derecha y avance recto.",
+    "maqueenPlusV2.readRealTimeSpeed": "Unidad del valor de retorno: centímetros por segundo (cm/s)",
+    "maqueenPlusV2": "Extensión para DFRobot Maqueen Plus V2&V3"
+}
