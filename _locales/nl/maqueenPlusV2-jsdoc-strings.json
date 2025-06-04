@@ -1,0 +1,23 @@
+{
+    "maqueenPlusV2.controlMotor": "Blok voor motorbediening. Hiermee kunt u de draairichting en snelheid wijzigen.",
+    "maqueenPlusV2.controlLED": "Blok voor het bedienen van de voorste LED-lampen.",
+    "maqueenPlusV2.readLineSensorState": "Geeft de waarde 1 terug als de geselecteerde sensor een lijn detecteert, anders geeft hij 0 terug.",
+    "maqueenPlusV2.readLineSensorData": "Geeft de analoge waarde (integer) terug van de geselecteerde lijnsensor.",
+    "maqueenPlusV2.readUltrasonic": "Geeft de afstand van de robot tot het obstakel in cm. De ultrasone sensor heeft een bereik van 2 tot 500 cm en geeft in geval van een fout de waarde 0 terug.",
+    "maqueenPlusV2.readUltrasonic|param|echo": "Pin voor het lezen van de ECHO-signaalwaarde. Bijv.: DigitalPin.P14",
+    "maqueenPlusV2.readUltrasonic|param|trig": "Pin voor het schrijven van het TRIG-signaal. Bijv.: DigitalPin.P13",
+    "maqueenPlusV2.readVersion": "Geeft een tekst met de versie van de robot terug.",
+    "maqueenPlusV2.controlMotorStop": "Blok stopt de geselecteerde motor (of beide motoren).",
+    "maqueenPlusV2.setBrightness": "Stelt de helderheid van alle RGB LED's in (wordt toegepast bij de volgende kleurverandering).",
+    "maqueenPlusV2.showColor": "Stelt de kleur van alle RGB LED's in op een nieuwe waarde.",
+    "maqueenPlusV2.setIndexColor": "Stelt de kleur in van de geselecteerde reeks RGB LED's. De parameterwaarde index geeft de specifieke LED aan of het bereik van-tot dat is gecreëerd met de functie ledRange.",
+    "maqueenPlusV2.ledRange": "Creëert een index die verwijst naar de reeks RGB LED's (zie setIndexColor).",
+    "maqueenPlusV2.rgb": "Blok waarmee u uw eigen kleur kunt definiëren met behulp van de rode, groene en blauwe componenten.",
+    "maqueenPlusV2.ledRainbow": "Toont geleidelijk regenboogkleuren op alle RGB LED's.",
+    "maqueenPlusV2.ledBlank": "Schakelt alle RGB LED's uit.",
+    "maqueenPlusV2.I2CInit": "Blok start de initialisatie van de I2C-bus en wacht tot deze succesvol is uitgevoerd. Dit blok is slechts één keer nodig, namelijk bij het starten van het programma.",
+    "maqueenPlusV2.NeoPixelColors": "Definitie van de meest voorkomende kleuren.",
+    "maqueenPlusV2.intersectionDetecting": "Returnwaarde: 1 vertegenwoordigt een kruispunt, 2 vertegenwoordigt een T-kruising (links en rechts afslaan), 3 vertegenwoordigt een kruising om linksaf te slaan en rechtdoor te rijden, 4 vertegenwoordigt een kruising om rechtsaf te slaan en rechtdoor te rijden.",
+    "maqueenPlusV2.readRealTimeSpeed": "Returnwaarde-eenheid: centimeters per seconde (cm/s)",
+    "maqueenPlusV2": "Uitbreiding voor DFRobot Maqueen Plus V2&V3"
+}
