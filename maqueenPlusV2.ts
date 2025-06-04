@@ -15,7 +15,7 @@ const enum PatrolSpeed {
 /**
  * Custom graphic block
  */
-//% weight=100 color=#0fbc11 icon="\uf067" block="maqueenPlusV2"
+//% weight=100 color=#0fbc11 icon="\uf067" block="MaqueenPlusV2&V3"
 //% groups="['V3']"
 namespace maqueenPlusV2 {
 
@@ -27,6 +27,14 @@ namespace maqueenPlusV2 {
         RightMotor,
         //% block="all motor"
         AllMotor,
+    };
+
+    //PID interruption
+    export enum MyInterruption {
+        //% block="Allow interruption"
+        Allowed,
+        //% block="No interruptions allowed"
+        NotAllowed,
     };
 
     //Motor direction enumeration selection
@@ -57,14 +65,14 @@ namespace maqueenPlusV2 {
 
     //Line sensor selection
     export enum MyEnumLineSensor {
+        //% block="L2"
+        SensorL2,
         //% block="L1"
         SensorL1,
         //% block="M"
         SensorM,
         //% block="R1"
         SensorR1,
-        //% block="L2"
-        SensorL2,
         //% block="R2"
         SensorR2,
     };
@@ -92,6 +100,25 @@ namespace maqueenPlusV2 {
         White = 0xFFFFFF,
         //% block=black
         Black = 0x000000
+    }
+    
+    export enum CarLightColors {
+        //% block=red
+        Red = 1,
+        //% block=green
+        Green = 2,
+        //% block=yellow
+        Yellow = 3,
+        //% block=blue
+        Blue = 4,
+        //% block=purple
+        Purple = 5,
+        //% block=cyan
+        Cyan = 6,
+        //% block=white
+        White = 7,
+        //% block=black
+        Black = 0
     }
 
     const I2CADDR = 0x10;
@@ -124,6 +151,13 @@ namespace maqueenPlusV2 {
     //%block="initialize via I2C until success"
     export function I2CInit(): void {
         let Version_v = 0;
+        //V3 systemReset
+        let allBuffer = pins.createBuffer(2);
+        allBuffer[0] = 0x49;
+        allBuffer[1] = 1;
+        pins.i2cWriteBuffer(I2CADDR, allBuffer); 
+        basic.pause(100);//waiting  reset
+
         pins.i2cWriteNumber(I2CADDR, 0x32, NumberFormat.Int8LE);
         Version_v = pins.i2cReadNumber(I2CADDR, NumberFormat.Int8LE);
         while (Version_v == 0) {
@@ -148,11 +182,6 @@ namespace maqueenPlusV2 {
                 `, 10)
         basic.pause(500)
         basic.clearScreen()
-        //V3 systemInit
-        let allBuffer = pins.createBuffer(2);
-        allBuffer[0] = 73;
-        allBuffer[1] = 1;
-        pins.i2cWriteBuffer(I2CADDR, allBuffer)
     }
 
     /**
@@ -319,7 +348,7 @@ namespace maqueenPlusV2 {
             case MyEnumLineSensor.SensorL1:
                 pins.i2cWriteNumber(I2CADDR, ADC3_REGISTER, NumberFormat.Int8LE);
                 let adc3Buffer = pins.i2cReadBuffer(I2CADDR, 2);
-                data = adc3Buffer[1] << 1 | adc3Buffer[0];
+                data = adc3Buffer[1] << 8 | adc3Buffer[0];
             break;
             default:
                 pins.i2cWriteNumber(I2CADDR, ADC4_REGISTER, NumberFormat.Int8LE);
@@ -330,38 +359,43 @@ namespace maqueenPlusV2 {
         }
         return data;
     }
-
+    function mydelayUs(unit: number):void{
+        let i
+        while((--unit)>0){
+            for (i = 0; i < 1; i++) {
+            } 
+        }
+    }
     /**
      * Acquiring ultrasonic data
      * @param trig trig pin selection enumeration, eg:DigitalPin.P13
      * @param echo echo pin selection enumeration, eg:DigitalPin.P14
+     * @note fit sr04/urm10   The difference between the two is that the echo sending time is different. 
+     * The sr04 sends the echo only after receiving the echo. When urm10 is triggered, it sends echo and stops after the echo
      */
-
     //% block="set ultrasonic sensor TRIG pin %trig ECHO pin %echo read data unit:cm"
     //% weight=94
+
     export function readUltrasonic(trig:DigitalPin, echo:DigitalPin):number{
         let data;
         pins.digitalWritePin(trig, 1);
-        basic.pause(1);
+        mydelayUs(10);
         pins.digitalWritePin(trig, 0)
-        if(pins.digitalReadPin(echo) == 0){
-            pins.digitalWritePin(trig, 0);
+        data = pins.pulseIn(echo, PulseValue.High, 1000 * 58);
+        if(data==0) //repeat
+        {
             pins.digitalWritePin(trig, 1);
-            basic.pause(20);
+            mydelayUs(10);
             pins.digitalWritePin(trig, 0);
-            data = pins.pulseIn(echo, PulseValue.High,500*58);
-        }else{
-            pins.digitalWritePin(trig, 1);
-            pins.digitalWritePin(trig, 0);
-            basic.pause(20);
-            pins.digitalWritePin(trig, 0);
-            data = pins.pulseIn(echo, PulseValue.High,500*58)
+            data = pins.pulseIn(echo, PulseValue.High, 1000 * 58)
         }
-        data = data / 59;
-        if(data <= 0)
+        //59.259 / ((331.5 + 0.6 * (float)(10)) * 100 / 1000000.0) // The ultrasonic velocity (cm/us) compensated by temperature
+        data = data / 59.259;
+
+        if (data <= 0)
             return 0;
-        if(data > 500)
-            return 500;
+        if (data > 300)
+            return 300;
         return Math.round(data);
     }
 
@@ -402,13 +436,13 @@ namespace maqueenPlusV2 {
 
     /**
      * The LED positions where you wish to begin and end
-     * @param from  , eg: 1
-     * @param to  , eg: 4
+     * @param from  , eg: 0
+     * @param to  , eg: 3
      */
 
     //% weight=60
     //% from.min=0 from.max=3
-    //% to.min=1 to.max=4
+    //% to.min=0 to.max=3
     //% block="range from |%from with|%to leds"
     export function ledRange(from: number, to: number): number {
         return ((from) << 16) + (2 << 8) + (to);
@@ -424,13 +458,14 @@ namespace maqueenPlusV2 {
     }
     /**
      * Set the color of the specified LEDs
-     * @param index  , eg: 1
+     * @param index  , eg: DigitalPin.P15
      */
 
     //% weight=60
     //% index.min=0 index.max=3
-    //% block="RGB light |%index show color|%rgb=neopixel_colors"
-    export function setIndexColor(index: number, rgb: number) {
+    //% pin.defl=DigitalPin.P15
+    //% block="SET PIN|%pin RGB light |%index show color|%rgb=neopixel_colors"
+    export function setIndexColor(pin:DigitalPin,index: number, rgb: number) {
         let f = index;
         let t = index;
         let r = (rgb >> 16) * (_brightness / 255);
@@ -451,17 +486,19 @@ namespace maqueenPlusV2 {
             neopixel_buf[i * 3 + 1] = Math.round(r)
             neopixel_buf[i * 3 + 2] = Math.round(b)
         }
-        ws2812b.sendBuffer(neopixel_buf, DigitalPin.P15)
+        ws2812b.sendBuffer(neopixel_buf, pin)
 
     }
 
     /**
      * Set the color of all RGB LEDs
+     * eg: DigitalPin.P15
      */
 
     //% weight=60
-    //% block=" RGB show color |%rgb=neopixel_colors"
-    export function showColor(rgb: number) {
+    //% pin.defl=DigitalPin.P15
+    //% block=" SET PIN|%pin RGB show color|%rgb=neopixel_colors"
+    export function showColor(pin:DigitalPin,rgb: number) {
         let r = (rgb >> 16) * (_brightness / 255);
         let g = ((rgb >> 8) & 0xFF) * (_brightness / 255);
         let b = ((rgb) & 0xFF) * (_brightness / 255);
@@ -473,7 +510,7 @@ namespace maqueenPlusV2 {
             if ((i % 3) == 2)
                 neopixel_buf[i] = Math.round(b)
         }
-        ws2812b.sendBuffer(neopixel_buf, DigitalPin.P15)
+        ws2812b.sendBuffer(neopixel_buf, pin)
     }
 
     /**
@@ -490,12 +527,14 @@ namespace maqueenPlusV2 {
 
     /**
      * Turn off all RGB LEDs
+     * eg: DigitalPin.P15
      */
 
     //% weight=40
-    //% block="clear all RGB"
-    export function ledBlank() {
-       showColor(0)
+    //% pin.defl=DigitalPin.P15
+    //% block="Set pin|%pin clear all RGB"
+    export function ledBlank(pin: DigitalPin) {
+       showColor(pin,0)
     }
 
     /**
@@ -503,12 +542,13 @@ namespace maqueenPlusV2 {
      */
 
     //% weight=50
+    //% pin.defl=DigitalPin.P15
     //% startHue.defl=1
     //% endHue.defl=360
     //% startHue.min=0 startHue.max=360
     //% endHue.min=0 endHue.max=360
-    //% blockId=led_rainbow block="set RGB show rainbow color from|%startHue to|%endHue"
-    export function ledRainbow(startHue: number, endHue: number) {
+    //% blockId=led_rainbow block="SET PIN|%pin set RGB show rainbow color from|%startHue to|%endHue"
+    export function ledRainbow(pin:DigitalPin,startHue: number, endHue: number) {
         startHue = startHue >> 0;
         endHue = endHue >> 0;
         const saturation = 100;
@@ -560,7 +600,7 @@ namespace maqueenPlusV2 {
             }
             writeBuff(3, hsl(endHue, saturation, luminance));
         }
-        ws2812b.sendBuffer(neopixel_buf, DigitalPin.P15)
+        ws2812b.sendBuffer(neopixel_buf, pin)
     }
 
     export enum HueInterpolationDirection {
@@ -677,6 +717,12 @@ namespace maqueenPlusV2 {
         //% block="All"
         All = 3,
     }
+    export enum DirectionType2 {
+        //% block="Left"
+        Left = 1,
+        //% block="Right"
+        Right = 2,
+    }
 
     export enum SpeedDirection {
         //% block="CW"
@@ -697,7 +743,7 @@ namespace maqueenPlusV2 {
 
 
     /**
-     * ...
+     * Set the line-following speed of the trolley.
      * @param speed to speed ,eg: PatrolSpeed.Speed1
      */
 
@@ -713,7 +759,7 @@ namespace maqueenPlusV2 {
     }
 
     /**
-     * ...
+     * Set motor type
      * @param type to type ,eg: MotorType.Motor133
      */
 
@@ -730,7 +776,7 @@ namespace maqueenPlusV2 {
      * ...
      * @param mode to mode ,eg: Intersection.Straight
      */
-maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
+    maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     //% block="At Crossroads %mode"
     //% weight=22
     //% group="V3"
@@ -791,7 +837,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     }
 
     /**
-     * ...
+     * Set the line-following function.
      * @param patrol to patrol ,eg: Patrolling.ON
      */
 
@@ -810,7 +856,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     }
 
     /**
-     * ...
+     * Get the status of the intersection
      */
 
     //% block="Intersection Detection"
@@ -824,7 +870,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     }
 
     /**
-     * ...
+     * Get the light intensity
      * @param type to type ,eg: DirectionType.Left
      */
 
@@ -832,28 +878,29 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     //% weight=16
     //% group="V3"
     //% advanced=true
-    export function readLightIntensity(type: DirectionType): number {
+    export function readLightIntensity(type: DirectionType2): number {
         let allBuffer = pins.createBuffer(4);
         pins.i2cWriteNumber(I2CADDR, 78, NumberFormat.Int8LE);
         allBuffer = pins.i2cReadBuffer(I2CADDR, 4);
-        if(type==DirectionType.Left)
+        if (type == DirectionType2.Left)
             return allBuffer[0] << 8 | allBuffer[1];
         else
             return allBuffer[2] << 8 | allBuffer[3];
     }
 
     /**
-     * ...
+     * Set the distance controlled by PID.
      * @param dir to dir ,eg: SpeedDirection.SpeedCW
      * @param speed to speed ,eg: PatrolSpeed.Speed1
      * @param distance to distance ,eg: 50
      */
 
-    //% block="PID Distance Control %dir speed %speed=PatrolSpeed_conv distance %distance cm"
+    //% block="PID Distance Control %dir  distance %distance cm   %interruption  interruption"
     //% weight=15
     //% group="V3"
     //% advanced=true
-    export function pidControlDistance(dir: SpeedDirection, speed: number, distance: number) {
+    export function pidControlDistance(dir: SpeedDirection, distance: number, interruption: MyInterruption) {
+        let speed =2 ;
         let allBuffer = pins.createBuffer(2);
         if (distance >= 6000)
             distance = 60000;
@@ -867,24 +914,39 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
         allBuffer[0] = 60; allBuffer[1] = 0x04 | 0x02;
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
+
+        if (interruption == MyInterruption.NotAllowed){
+            pins.i2cWriteNumber(I2CADDR, 87, NumberFormat.Int8LE);
+            let flagBuffer = pins.createBuffer(1);
+            flagBuffer = pins.i2cReadBuffer(I2CADDR, 1);
+            while (flagBuffer[0]==1){
+                basic.pause(10);
+                flagBuffer=pins.i2cReadBuffer(I2CADDR, 1);  
+            }
+        }
+
     }
 
     /**
-     * ...
+     * Set the control angle of PID.
      * @param speed to speed ,eg: PatrolSpeed.Speed1
      * @param angle to angle ,eg: 90
      */
 
-    //% block="PID Angle Control speed %speed=PatrolSpeed_conv angle %angle"
+    //% block="PID Angle Control speed  angle %angle %interruption  interruption"
     //% angle.min=-180 angle.max=180 angle.defl=90
     //% weight=14
     //% group="V3"
     //% advanced=true
-    export function pidControlAngle(speed: number, angle: number) {
+    export function pidControlAngle(angle: number, interruption: MyInterruption) {
+        let speed = 2;
         let allBuffer = pins.createBuffer(2);
         allBuffer[0] = 67;
         if (angle>=0)allBuffer[1] = 1;
-        else allBuffer[1] = 2;
+        else{
+            allBuffer[1] = 2;
+            angle = -angle;
+        } 
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
         allBuffer[0] = 86; allBuffer[1] = speed;
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
@@ -892,9 +954,20 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
         allBuffer[0] = 60; allBuffer[1] = 0x04 | 0x02;
         pins.i2cWriteBuffer(I2CADDR, allBuffer)
+
+        if (interruption == MyInterruption.NotAllowed) {
+            pins.i2cWriteNumber(I2CADDR, 87, NumberFormat.Int8LE);
+            let flagBuffer = pins.createBuffer(1);
+            flagBuffer = pins.i2cReadBuffer(I2CADDR, 1);
+            while (flagBuffer[0] == 1) {
+                basic.pause(10);
+                flagBuffer = pins.i2cReadBuffer(I2CADDR, 1);
+            }
+        }
+
     }
     /**
-     * ...
+     * Set the PID (Proportional-Integral-Derivative)
      */
 
     //% block="PID Control Stop"
@@ -909,7 +982,7 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     }
 
     /**
-     * ...
+     * Gets the real-time speed in cm/s
      * @param type to type ,eg: DirectionType.Left
      */
 
@@ -917,56 +990,43 @@ maqueenPlusV2.setRightOrStraightRunMode(RightOrStraight.Straight)
     //% weight=12
     //% group="V3"
     //% advanced=true
-    export function readRealTimeSpeed(type: DirectionType): number {
+    export function readRealTimeSpeed(type: DirectionType2): number {
         let allBuffer = pins.createBuffer(2);
         pins.i2cWriteNumber(I2CADDR, 76, 1);
         allBuffer = pins.i2cReadBuffer(I2CADDR, 2);
-        if (type == DirectionType.Left)
+        if (type == DirectionType2.Left)
             return allBuffer[0] / 5;
         else
             return allBuffer[1] / 5;
     }
 
     /**
-     * ...
+     * Set the color of the vehicle lights.
      * @param type to type ,eg: DirectionType.Left
-     * @param rgb to rgb ,eg: NeoPixelColors.Red
+     * @param rgb to rgb ,eg: CarLightColors.Red
      */
 
     //% block="RGB Car Lights %type color %rgb"
     //% weight=11
     //% group="V3"
     //% advanced=true
-    export function setRgblLed(type: DirectionType, rgb: NeoPixelColors) {
-
+    export function setRgblLed(type: DirectionType, rgb: CarLightColors) {
         let allBuffer = pins.createBuffer(2);
-        let buf = 0;
-    
-        switch (rgb) {
-            case 0xFF0000: buf = 1; break;
-            case 0x00FF00: buf = 2; break;
-            case 0xFFFF00: buf = 3; break;
-            case 0x0000FF: buf = 4; break;
-            case 0xFF00FF: buf = 5; break;
-            case 0x00FFFF: buf = 6; break;
-            case 0xFFFFFF: buf = 7; break;
-            case 0x000000: buf = 0; break;
-            default: buf = 0; break;
-        }
-        allBuffer[1] = buf;
-        if (type == DirectionType.Left){
+        allBuffer[1] = rgb;
+        if (type == DirectionType.Left) {
             allBuffer[0] = 11;
             pins.i2cWriteBuffer(I2CADDR, allBuffer)
-        }else if (type == DirectionType.Right){
+        } else if (type == DirectionType.Right) {
             allBuffer[0] = 12;
             pins.i2cWriteBuffer(I2CADDR, allBuffer)
-        } else if (type == DirectionType.All){
+        } else if (type == DirectionType.All) {
             allBuffer[0] = 11;
             pins.i2cWriteBuffer(I2CADDR, allBuffer)
             allBuffer[0] = 12;
             pins.i2cWriteBuffer(I2CADDR, allBuffer)
         }
     }
+
 }
 
 

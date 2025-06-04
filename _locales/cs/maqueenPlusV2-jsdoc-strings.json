@@ -45,7 +45,7 @@
     "maqueenPlusV2.NeoPixelColors": "Definice nejběžnějších barev.",
     "maqueenPlusV2.intersectionDetecting": "Návratová hodnota: 1 představuje křižovatku, 2 představuje křižovatku pro odbočení vlevo a vpravo (T-křižovatku), 3 představuje křižovatku pro odbočení vlevo a jízdu rovně, 4 představuje křižovatku pro odbočení vpravo a jízdu rovně.",
     "maqueenPlusV2.readRealTimeSpeed": "Návratová hodnota jednotky: centimetry za sekundu (cm/s)",
-    "maqueenPlusV2": "Rozšíření pro DFRobot Maqueen Plus v2",
+    "maqueenPlusV2": "Rozšíření pro DFRobot Maqueen Plus v2&V3",
     "IR.IR_read": "Přečte hodnotu z infra přijímače.",
     "IR.IR_callbackUser": "Automaticky spustí daný blok kódu poté, co infra přijímač zpracuje příchozí zprávu.",
     "IR.IR_callbackUser|param|cb": "Blok kódu, který bude spuštěn. Jako parametr musí tento blok akceptovat hodnotu přijaté zprávy."

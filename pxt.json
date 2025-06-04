@@ -1,12 +1,13 @@
 {
     "name": "maqueenPlusV2",
-    "version": "2.2.6",
+    "version": "2.2.20",
     "description": "This is the latest version of Maqueen Plus, a programming robot for STEAM education.",
     "license": "MIT",
     "dependencies": {
         "core": "*",
         "ir": "github:dfrobot/pxt-dfrobot_ir#v1.0.3",
-        "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.2"
+        "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.2",
+        "matrixLidarDistance": "github:dfrobot/pxt-DFRobot_matrixLidarDistanceSensor.git"
     },
     "files": [
         "README.md",
@@ -16,13 +17,14 @@
         "_locales/cs/maqueenPlusV2-strings.json",
         "_locales/cs/maqueenPlusV2-jsdoc-strings.json",
         "_locales/fr/maqueenPlusV2-strings.json",
+        "_locales/de/maqueenPlusV2-strings.json",
         "maqueenPlusV2.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "7.0.51",
+        "target": "7.0.61",
         "targetId": "microbit"
     },
     "supportedTargets": [
