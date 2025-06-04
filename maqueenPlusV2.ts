@@ -6,7 +6,7 @@ const enum PatrolSpeed {
     Speed2 = 2,
     //% block="3"
     Speed3 = 3,
-    //% block="4"maqueenPlusV2.readLightIntensity(DirectionType.Left)
+    //% block="4"
     Speed4 = 4,
     //% block="5"
     Speed5 = 5,
@@ -15,7 +15,7 @@ const enum PatrolSpeed {
 /**
  * Custom graphic block
  */
-//% weight=100 color=#0fbc11 icon="\uf067" block="maqueenPlusV2"
+//% weight=100 color=#0fbc11 icon="\uf067" block="MaqueenPlusV2&V3"
 //% groups="['V3']"
 namespace maqueenPlusV2 {
 

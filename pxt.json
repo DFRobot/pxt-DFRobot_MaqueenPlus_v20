@@ -1,6 +1,6 @@
 {
     "name": "maqueenPlusV2",
-    "version": "2.2.16",
+    "version": "2.2.20",
     "description": "This is the latest version of Maqueen Plus, a programming robot for STEAM education.",
     "license": "MIT",
     "dependencies": {
@@ -19,13 +19,15 @@
         "_locales/fr/maqueenPlusV2-strings.json",
         "_locales/nl/maqueenPlusV2-strings.json",
         "_locales/nl/maqueenPlusV2-jsdoc-strings.json",
+        "_locales/es-es/maqueenPlusV2-strings.json",
+        "_locales/de/maqueenPlusV2-strings.json",
         "maqueenPlusV2.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "7.0.51",
+        "target": "7.0.61",
         "targetId": "microbit"
     },
     "supportedTargets": [

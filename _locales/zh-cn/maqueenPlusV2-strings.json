@@ -58,7 +58,7 @@
     "maqueenPlusV2.pidControlDistance|block": "PID距离控制 %dir 距离 %distance cm  %interruption 中断",
     "maqueenPlusV2.pidControlAngle|block": "PID角度控制 角度 %angle°  %interruption 中断",
     "maqueenPlusV2.pidControlStop|block": "PID控制停止",
-    "maqueenPlusV2.readRealTimeSpeed|block": "读取%type轮的实时速度CM/S",
+    "maqueenPlusV2.readRealTimeSpeed|block": "读取%type轮的实时速度cm/s",
     "maqueenPlusV2.setRgblLed|block": "RGB车灯 %type 颜色 %rgb",
     "maqueenPlusV2.MotorType.Motor133|block": "133转",
     "maqueenPlusV2.MotorType.Motor266|block": "266转",
