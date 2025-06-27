@@ -1,0 +1,20 @@
+{
+    "maqueenPlusV2": "",
+    "maqueenPlusV2.I2CInit": "Initialize I2C until successful",
+    "maqueenPlusV2.controlMotor": "Control the motor module to run",
+    "maqueenPlusV2.controlMotorStop": "Control the motor module to stop running",
+    "maqueenPlusV2.controlLED": "Control the left and right LED switches",
+    "maqueenPlusV2.readLineSensorState": "Get the status of the line-following sensor. Returns 0 when the car is on white paper, returns 1 when in the air/on black paper",
+    "maqueenPlusV2.readLineSensorData": "Get the ADC data of the line-following sensor",
+    "maqueenPlusV2.readUltrasonic": "Get the data from the ultrasonic sensor (CM)",
+    "maqueenPlusV2.readVersion": "Get the version number",
+    "maqueenPlusV2.rgb": "Set three primary colors: red, green, blue",
+    "maqueenPlusV2.ledRange": "RGB lights, from the start position number to the end position number",
+    "maqueenPlusV2.setIndexColor": "Set the color of the specified LED light",
+    "maqueenPlusV2.showColor": "Set the color of all RGB lights",
+    "maqueenPlusV2.setBrightness": "Set the brightness of the RGB lights",
+    "maqueenPlusV2.ledBlank": "Turn off all RGB lights",
+    "maqueenPlusV2.ledRainbow": "RGB lights display rainbow colors",
+    "maqueenPlusV2.intersectionDetecting":"Return value: 1 is a crossroad, 2 is a left and right turn intersection (T-junction), 3 is a left turn and straight intersection, 4 is a right turn and straight intersection",
+    "maqueenPlusV2.readRealTimeSpeed":"Return value unit: centimeters per second (cm/s)"
+} 

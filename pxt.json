@@ -27,6 +27,8 @@
         "_locales/de/maqueenPlusV2-jsdoc-strings.json",
         "_locales/ko/maqueenPlusV2-strings.json",
         "_locales/ko/maqueenPlusV2-jsdoc-strings.json",
+        "_locales/en/maqueenPlusV2-strings.json",
+        "_locales/en/maqueenPlusV2-jsdoc-strings.json",
         "maqueenPlusV2.ts"
     ],
     "testFiles": [
