@@ -7,7 +7,7 @@
         "core": "*",
         "ir": "github:dfrobot/pxt-dfrobot_ir#v1.0.5",
         "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.2",
-        "matrixLidarDistance": "github:dfrobot/pxt-DFRobot_matrixLidarDistanceSensor#v1.0.0"
+        "matrixLidarDistance": "github:dfrobot/pxt-dfrobot_matrixlidardistancesensor#v1.0.1"
     },
     "files": [
         "README.md",
