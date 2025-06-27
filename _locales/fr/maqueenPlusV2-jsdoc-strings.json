@@ -1,0 +1,20 @@
+{
+    "maqueenPlusV2": "",
+    "maqueenPlusV2.I2CInit": "Initialiser I2C jusqu'au succès",
+    "maqueenPlusV2.controlMotor": "Contrôler le fonctionnement du module moteur",
+    "maqueenPlusV2.controlMotorStop": "Contrôler l'arrêt du module moteur",
+    "maqueenPlusV2.controlLED": "Contrôler l'interrupteur LED gauche et droit",
+    "maqueenPlusV2.readLineSensorState": "Obtenir l'état du capteur de suivi de ligne. Retourne 0 quand la voiture est placée sur du papier blanc, retourne 1 quand la voiture est placée dans l'air/sur du papier noir",
+    "maqueenPlusV2.readLineSensorData": "Obtenir les données ADC du capteur de suivi de ligne",
+    "maqueenPlusV2.readUltrasonic": "Obtenir les données du capteur ultrasonique (CM)",
+    "maqueenPlusV2.readVersion": "Obtenir le numéro de version",
+    "maqueenPlusV2.rgb": "Définir les trois couleurs primaires : rouge, vert, bleu",
+    "maqueenPlusV2.ledRange": "LEDs RGB, de la position de début à la position de fin",
+    "maqueenPlusV2.setIndexColor": "Définir la couleur de la LED spécifiée",
+    "maqueenPlusV2.showColor": "Définir la couleur de tous les LEDs RGB",
+    "maqueenPlusV2.setBrightness": "Définir la luminosité des LEDs RGB",
+    "maqueenPlusV2.ledBlank": "Éteindre tous les LEDs RGB",
+    "maqueenPlusV2.ledRainbow": "Afficher les couleurs arc-en-ciel sur les LEDs RGB",
+    "maqueenPlusV2.intersectionDetecting":"Valeur de retour : 1 est un carrefour, 2 est une intersection à gauche et à droite (intersection en T), 3 est une intersection à gauche et tout droit, 4 est une intersection à droite et tout droit",
+    "maqueenPlusV2.readRealTimeSpeed":"Unité de valeur de retour : centimètres par seconde (cm/s)"
+} 

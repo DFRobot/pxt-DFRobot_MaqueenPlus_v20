@@ -1,0 +1,20 @@
+{
+    "maqueenPlusV2": "",
+    "maqueenPlusV2.I2CInit": "初始化I2C直到成功",
+    "maqueenPlusV2.controlMotor": "控制電機模組運行",
+    "maqueenPlusV2.controlMotorStop": "控制電機模組停止運行",
+    "maqueenPlusV2.controlLED": "控制左、右LED開關",
+    "maqueenPlusV2.readLineSensorState": "獲取巡線感測器的狀態 將小車放在白紙上返回為0，將小車放在空中/黑紙上返回為1",
+    "maqueenPlusV2.readLineSensorData": "獲取巡線感測器的ADC數據",
+    "maqueenPlusV2.readUltrasonic": "獲取超音波感測器的數據(CM)",
+    "maqueenPlusV2.readVersion": "獲取版本號",
+    "maqueenPlusV2.rgb": "設置三種原色：紅、綠、藍",
+    "maqueenPlusV2.ledRange": "RGB燈，從開始的位置號到結束的位置號",
+    "maqueenPlusV2.setIndexColor": "設置指定的LED燈的顏色",
+    "maqueenPlusV2.showColor": "設置所有RGB燈的顏色",
+    "maqueenPlusV2.setBrightness": "設置RGB燈的亮度",
+    "maqueenPlusV2.ledBlank": "關閉所有RGB燈",
+    "maqueenPlusV2.ledRainbow": "RGB燈顯示彩虹色",
+    "maqueenPlusV2.intersectionDetecting":"返回值：1是十字路口，2是左轉及右轉路口（T字路口），3是左轉及直行路口，4是右轉及直行路口",
+    "maqueenPlusV2.readRealTimeSpeed":"返回值單位：公分每秒（cm/s）"
+} 

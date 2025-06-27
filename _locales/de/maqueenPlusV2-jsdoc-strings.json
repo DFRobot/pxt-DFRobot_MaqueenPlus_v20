@@ -1,0 +1,20 @@
+{
+    "maqueenPlusV2": "",
+    "maqueenPlusV2.I2CInit": "I2C initialisieren bis zum Erfolg",
+    "maqueenPlusV2.controlMotor": "Motormodul-Betrieb steuern",
+    "maqueenPlusV2.controlMotorStop": "Motormodul-Stopp steuern",
+    "maqueenPlusV2.controlLED": "Linke und rechte LED-Schalter steuern",
+    "maqueenPlusV2.readLineSensorState": "Status des Liniensensors abrufen. Gibt 0 zurück, wenn das Auto auf weißem Papier platziert wird, gibt 1 zurück, wenn das Auto in der Luft/auf schwarzem Papier platziert wird",
+    "maqueenPlusV2.readLineSensorData": "ADC-Daten des Liniensensors abrufen",
+    "maqueenPlusV2.readUltrasonic": "Daten des Ultraschallsensors abrufen (CM)",
+    "maqueenPlusV2.readVersion": "Versionsnummer abrufen",
+    "maqueenPlusV2.rgb": "Drei Grundfarben einstellen: Rot, Grün, Blau",
+    "maqueenPlusV2.ledRange": "RGB-LEDs, von der Startposition bis zur Endposition",
+    "maqueenPlusV2.setIndexColor": "Farbe der angegebenen LED einstellen",
+    "maqueenPlusV2.showColor": "Farbe aller RGB-LEDs einstellen",
+    "maqueenPlusV2.setBrightness": "Helligkeit der RGB-LEDs einstellen",
+    "maqueenPlusV2.ledBlank": "Alle RGB-LEDs ausschalten",
+    "maqueenPlusV2.ledRainbow": "Regenbogenfarben auf RGB-LEDs anzeigen",
+    "maqueenPlusV2.intersectionDetecting":"Rückgabewert: 1 ist eine Kreuzung, 2 ist eine Links- und Rechtskurve (T-Kreuzung), 3 ist eine Links- und Geradeaus-Kreuzung, 4 ist eine Rechts- und Geradeaus-Kreuzung",
+    "maqueenPlusV2.readRealTimeSpeed":"Rückgabewert-Einheit: Zentimeter pro Sekunde (cm/s)"
+} 

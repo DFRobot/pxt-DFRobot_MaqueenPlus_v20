@@ -1,0 +1,20 @@
+{
+    "maqueenPlusV2": "",
+    "maqueenPlusV2.I2CInit": "I2C가 성공할 때까지 초기화",
+    "maqueenPlusV2.controlMotor": "모터 모듈 작동 제어",
+    "maqueenPlusV2.controlMotorStop": "모터 모듈 작동 중지 제어",
+    "maqueenPlusV2.controlLED": "좌우 LED 스위치 제어",
+    "maqueenPlusV2.readLineSensorState": "라인 센서 상태 읽기. 흰 종이 위에서는 0, 공중이나 검은 종이 위에서는 1을 반환",
+    "maqueenPlusV2.readLineSensorData": "라인 센서의 ADC 데이터 읽기",
+    "maqueenPlusV2.readUltrasonic": "초음파 센서 데이터 읽기(CM)",
+    "maqueenPlusV2.readVersion": "버전 번호 읽기",
+    "maqueenPlusV2.rgb": "세 가지 기본색 설정: 빨강, 초록, 파랑",
+    "maqueenPlusV2.ledRange": "RGB LED, 시작 위치 번호부터 끝 위치 번호까지",
+    "maqueenPlusV2.setIndexColor": "지정된 LED의 색상 설정",
+    "maqueenPlusV2.showColor": "모든 RGB LED의 색상 설정",
+    "maqueenPlusV2.setBrightness": "RGB LED 밝기 설정",
+    "maqueenPlusV2.ledBlank": "모든 RGB LED 끄기",
+    "maqueenPlusV2.ledRainbow": "RGB LED 무지개색 표시",
+    "maqueenPlusV2.intersectionDetecting":"반환값: 1은 십자로, 2는 좌회전 및 우회전 교차로(T자 교차로), 3은 좌회전 및 직진 교차로, 4는 우회전 및 직진 교차로",
+    "maqueenPlusV2.readRealTimeSpeed":"반환값 단위: 초당 센티미터(cm/s)"
+}
