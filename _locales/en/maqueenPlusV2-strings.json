@@ -76,7 +76,7 @@
     "maqueenPlusV2.RightOrStraight.Right|block": "Right",
     "maqueenPlusV2.RightOrStraight.Stop|block": "Stop line following",
     "maqueenPlusV2.Patrolling.ON|block": "On",
-    "maqueenPlusV2.Patrolling.OFF|block": "Stop line following",
+    "maqueenPlusV2.Patrolling.OFF|block": "Off",
     "maqueenPlusV2.DirectionType.Left|block": "Left",
     "maqueenPlusV2.DirectionType.Right|block": "Right",
     "maqueenPlusV2.DirectionType.All|block": "All",

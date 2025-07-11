@@ -76,7 +76,7 @@
     "maqueenPlusV2.RightOrStraight.Right|block": "우회전",
     "maqueenPlusV2.RightOrStraight.Stop|block": "라인 추적 정지",
     "maqueenPlusV2.Patrolling.ON|block": "켜기",
-    "maqueenPlusV2.Patrolling.OFF|block": "라인 추적 정지",
+    "maqueenPlusV2.Patrolling.OFF|block": "정지",
     "maqueenPlusV2.DirectionType.Left|block": "왼쪽",
     "maqueenPlusV2.DirectionType.Right|block": "오른쪽",
     "maqueenPlusV2.DirectionType.All|block": "모든",
