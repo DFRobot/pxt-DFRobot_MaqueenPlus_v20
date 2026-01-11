@@ -122,11 +122,11 @@ namespace maqueenPlusV2 {
     }
 
     const I2CADDR = 0x10;
-    const ADC0_REGISTER = 0X1E;
-    const ADC1_REGISTER = 0X20;
+    const ADC0_REGISTER = 0X26;
+    const ADC1_REGISTER = 0X24;
     const ADC2_REGISTER = 0X22;
-    const ADC3_REGISTER = 0X24;
-    const ADC4_REGISTER = 0X26;
+    const ADC3_REGISTER = 0X20;
+    const ADC4_REGISTER = 0X1E;
     const LEFT_LED_REGISTER = 0X0B;
     const RIGHT_LED_REGISTER = 0X0C;
     const LEFT_MOTOR_REGISTER = 0X00;
